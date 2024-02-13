@@ -14,7 +14,7 @@ using namespace std;
 const int screenWidth = 1745; //800, 1745
 const int screenHeight = 895; //450
 /*
- � = avarage distance to sun
+ а = avarage distance to sun
  e = warping a planet
  perihelionAngle = closest point of each planet to the sun
 */
@@ -75,6 +75,8 @@ namespace neptune
 
 // draw orbit
 void draw_orbit(const double, const double, const double);
+
+// alignments of different planets and the sun
 
 namespace align_sun
 {
@@ -199,11 +201,27 @@ namespace actual_speed // float value speed
 	static float neptune_speed = 0.02f; //8
 
 }
+vector <bool> draw_on_orbit(9); // checkers if pluton needs to be in the program
+static bool black_hole_disapppear[9];
+//static float speed_pluton[9]
+void draw_planet(Texture2D, int&, int&, float&); // draw a texture using DrawTexturePro
+
 Vector2 rotate_point(float&, float, float, float, float);
 
 Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed);
 
 void rotate_planet(float&, float, float, float, float, int&, int&);
+
+void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down);
+
+string convert_float_to_str(float); // convert float to string
+
+// void stats_show(Texture2D planet, const char* name,Texture2D Close,const int align_left, const int align_down);
+
+void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
+void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank);
+static int info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
+static int check1, check2, check3, check4;
 
 
 	

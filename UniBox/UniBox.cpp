@@ -90,39 +90,6 @@ int main()
         draw_orbit(uranus::a, uranus::e, uranus::perihelionAngle);
         draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
 
-        // DrawTexture(info, 1665, 20, WHITE); // draw info button, 1665 is left(x) and 20 is down(y)
-
-        //DrawTexture(blank_info, 1665, 20, BLANK); // use this texture as an invisible filler, so that the info button works
-
-           /////////////////////////////////
-              //  - 1.draw speed,  // convertor is done, so this is done too
-              //  - 2.make a convertor from float to const char* , ///////// done, but it is float to string and c_str to const char* because there is data loss
-              //  - 3.fix define constants naming problem, // fixed
-              //  - 4.fix mouse buttons inputs, // done,
-              //  - 5.finish the stats_show algorithm // done
-           //////////////////////////////////
-           // - 1.make the start menu
-           //////////////////////////////////
-           // - 1. make a drop-down menu for the planets to hover and view stats, up-right // done
-           // - 2. repair stats image and its alignments // done
-           // - 3. fix all variables and delete if there are any unused or just pragma them // done
-           /////////////////////////////////
-           // - 1. make the left buttons menu for change direction, change temperature, black hole, add planet(questionable)
-           // - 2. start working on change direction (you'll need to play with left alignments and rotate_planet function)
-           ////////////////////////////////
-           // - 1. make the resume,new ,exit up-left menu
-         ////////////////////////////////////////////
-         // - 1. imagine where will the planets be moved on right, left( finish left,right  in functions_menu)
-         /////////////////////////////////////////////////
-         // - 1. make change temperature(maybe speed is better), and if speed is idea remmber to use check1 to see if it is moving backwards or farwards so you can rotate_back, backward_speed
-     /////////////////////////////////////////////////////////////////////////
-     // - 1. make change speed
-     ////////////////////////////////////////////////////
-     // - 1. start working on add planet, make menu
-     // - 2. make ifs for the stats_menu and connect the planet with the other functions
-     // - 3. build checkers for the orbits and close button
-     ////////////////////////////////////
-     // 1. black hole or other ideas
         menu_show(blank_info, menu, stats, checker, info, pluton_in_stats);
 
         functions_menu(functions, Checker, exit_button, checker_exit_button, exit_menu, options_checker, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Sun, pluton, add_planet_menu, cancel_add_planet, cancel_add_planet_blank);

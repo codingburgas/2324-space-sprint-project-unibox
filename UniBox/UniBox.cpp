@@ -136,7 +136,17 @@ void draw_orbit(const double a, const double e, const double perihelionAngle)
         DrawPixel((int)x, (int)y, WHITE);
     }
 }
+Vector2 rotate_point(float& angle, float a, float e, float perihelionAngle, float speed)
+{
 
+    float radians = (angle + perihelionAngle) * DEG2RAD;
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle));
+    angle += speed;
+    if (angle > 360.f)
+        angle = 0.f;
+    return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) };
+
+}
 
   
 

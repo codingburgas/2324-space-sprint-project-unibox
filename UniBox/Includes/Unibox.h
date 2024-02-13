@@ -76,7 +76,129 @@ namespace neptune
 // draw orbit
 void draw_orbit(const double, const double, const double);
 
+namespace align_sun
+{
+	int down = 385;
+	int left = 830; // 838
+	float angle = 0.f;
+}
+namespace align_mercury
+{
+	int down = 390;
+	int left = 800;
+	float angle = 77.46f;
+}
+namespace align_venus
+{
+	int down = 400;
+	int left = 759;
+	float angle = 0.f;
+}
+namespace align_earth
+{
+	int down = 400;
+	int left = 718;
+	float angle = 0.f;
+}
+namespace align_mars
+{
+	int down = 405;
+	int left = 659;
+	float angle = 0.f;
+}
+namespace align_jupiter
+{
+	int down = 405;
+	int left = 603;
+	float angle = 0.f;
+}
+namespace align_saturn
+{
+	int down = 375;
+	int left = 494;
+	float angle = 0.f;
+}
+namespace align_uranus
+{
+	int down = 410;
+	int left = 510;
+	float angle = 0.f;
+}
+namespace align_neptune
+{
+	int down = 410;
+	int left = 390;
+	float angle = 0.f;
+}
 
+// alignments of stats menu and its elements: left is x ,down is y
+// average k is 60 ( average difference between all downs), most of them are decremented by 2 to make the text look better
+// stats
+const int left_stats = 1395;
+const int align_stats_down[9] = { 95,153,213,273,333,393,453,513,573 };
+// length
+const int left_length[9] = { 1458,1450,1450,1446,1450,1443,1442,1443,1442 };
+const int align_length_down[9] = { 171,229,290,349,408,469,529,590,650 };
+// temperature
+const int left_temperature[9] = { 1467,1472,1470,1484,1480,1467,1465,1465,1464 };
+const int align_temperature_down[9] = { 108,166,226,286,346,406,465,526,585 };
+// speed
+const int left_speed[9] = { 1460,1454,1450,1456,1455,1455,1460,1456,1460 };
+const int align_speed_down[9] = { 244,302,362,422,482,542,602,662,722 };
+
+// text size in stats
+#define text_size 28
+
+// we are using a key value, in this case a string to find each temperature and speed (float value)
+// lengths is just const char* to const char*
+map<string, float> temperatures =
+{
+	{"Sun",5500.0f},
+	{"Mercury",430.0f},
+	{"Venus",470.0f},
+	{"Earth",15.0f},
+	{"Mars",20.0f},
+	{"Jupiter",-145.0f},
+	{"Saturn",-178.0f},
+	{"Uranus",-224.0f},
+	{"Neptune",-220.0f}
+};
+map <const char*, const char*> lengths =
+{
+	{"Sun","1.4Mkm"},
+	{"Mercury","4880km"},
+	{"Venus","12104km"},
+	{"Earth","12742km"},
+	{"Mars","6779km"},
+	{"Jupiter","98982km"},
+	{"Saturn","116460km"},
+	{"Uranus","50724km"},
+	{"Neptune","49244km"}
+};
+map <const char*, float> speeds =        // theoretical speeds in real life
+{
+	{"Sun",10000.f},
+	{"Mercury", 170503.f},
+	{"Venus", 126074.f},
+	{"Earth", 107218.f},
+	{"Mars", 86667.f},
+	{"Jupiter", 47002.f},
+	{"Saturn", 34701.f},
+	{"Uranus", 24477.f},
+	{"Neptune", 19556.f}
+};
+namespace actual_speed // float value speed
+{
+	static float mercury_speed = 3.f; // 1
+	static float venus_speed = 2.f; //2
+	static float earth_speed = 1.f; //3
+	static float mars_speed = 0.5f; //4
+	static float jupiter_speed = 0.3f; //5
+	static float saturn_speed = 0.08f; //6
+	static float uranus_speed = 0.05f; //7
+	static float neptune_speed = 0.02f; //8
+
+}
 
 
 

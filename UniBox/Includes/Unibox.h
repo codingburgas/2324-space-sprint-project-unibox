@@ -199,7 +199,11 @@ namespace actual_speed // float value speed
 	static float neptune_speed = 0.02f; //8
 
 }
+Vector2 rotate_point(float&, float, float, float, float);
 
+Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed);
+
+void rotate_planet(float&, float, float, float, float, int&, int&);
 
 
 	

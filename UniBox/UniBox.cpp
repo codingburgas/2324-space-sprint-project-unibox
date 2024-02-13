@@ -147,6 +147,25 @@ Vector2 rotate_point(float& angle, float a, float e, float perihelionAngle, floa
     return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) };
 
 }
+Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed)
+{
+    float radians = (angle + perihelionAngle) * DEG2RAD;
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle));
+    angle -= speed;
+    if (angle < 0.f)
+        angle = 360.f + angle;
+    return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) };
+}
+void rotate_planet(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down)
+{
+    Vector2 newp = rotate_point(angle, a, e, perihelionAngle, speed);
+    left = newp.x;
+    down = newp.y;
+    //rotate mercury
+    //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::perihelionAngle, 10.f);
+    //  align_mercury::left = newp.x ;
+    // align_mercury::down = newp.y ;
+}
 
   
 

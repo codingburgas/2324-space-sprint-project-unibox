@@ -216,7 +216,6 @@ void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, f
 
 string convert_float_to_str(float); // convert float to string
 
-// void stats_show(Texture2D planet, const char* name,Texture2D Close,const int align_left, const int align_down);
 
 void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
 void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank);

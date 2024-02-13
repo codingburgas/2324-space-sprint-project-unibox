@@ -29,7 +29,6 @@ int main()
     Texture2D checker_exit_button = LoadTexture("Images/checker_exit.png"); // checker to see if exit options are pressed   
     Texture2D exit_menu = LoadTexture("Images/exit_menu.png"); // exit menu options
     Texture2D options_checker = LoadTexture("Images/exit_options_checker.png");// checker if any of the exit options are checked
-
     Texture2D pluton = LoadTexture("Images/pluton.png"); // pluton picture    
     Texture2D add_planet_menu = LoadTexture("Images/add_planet_menu2.png"); // add planet menu
     Texture2D cancel_add_planet = LoadTexture("Images/cancel_button.png");// cancel button
@@ -1084,15 +1083,7 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
         }
 
-
-
-
     }
-
-
-
-
-
 }
   
 

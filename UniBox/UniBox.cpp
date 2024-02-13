@@ -74,7 +74,20 @@ int main()
     {
 
         BeginDrawing();
+ClearBackground(BLACK); // black background by default
 
+DrawTexture(background, 5, 0, WHITE); // galaxy background
+
+// draw orbit of each
+draw_orbit(sun::a, sun::e, sun::perihelionAngle);
+draw_orbit(mercury::a, mercury::e, mercury::perihelionAngle);
+draw_orbit(venus::a, venus::e, venus::perihelionAngle);
+draw_orbit(earth::a, earth::e, earth::perihelionAngle);
+draw_orbit(mars::a, mars::e, mars::perihelionAngle);
+draw_orbit(jupiter::a, jupiter::e, jupiter::perihelionAngle);
+draw_orbit(saturn::a, saturn::e, saturn::perihelionAngle);
+draw_orbit(uranus::a, uranus::e, uranus::perihelionAngle);
+draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
        
 
         EndDrawing();
@@ -110,7 +123,19 @@ int main()
     UnloadTexture(cancel_add_planet_blank);
     UnloadTexture(pluton_in_stats);
 }
+void draw_orbit(const double a, const double e, const double perihelionAngle)
+{
 
+    for (double theta = 0.0; theta <= 360.0; theta++)
+    {
+        double radians = (theta + perihelionAngle) * DEG2RAD;
+        double radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle));
+        double x = screenWidth / 2 + radius * cos(radians);
+        double y = screenHeight / 2 + radius * sin(radians);
+
+        DrawPixel((int)x, (int)y, WHITE);
+    }
+}
 
 
   

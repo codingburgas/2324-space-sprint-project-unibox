@@ -32,8 +32,9 @@ int main()
     Texture2D pluton = LoadTexture("Images/pluton.png"); // pluton picture    
     Texture2D add_planet_menu = LoadTexture("Images/add_planet_menu2.png"); // add planet menu
     Texture2D cancel_add_planet = LoadTexture("Images/cancel_button.png");// cancel button
-    Texture2D cancel_add_planet_blank = LoadTexture("Images/add_planet_cancel_blank_button.png");
-    Texture2D pluton_in_stats = LoadTexture("Images/mercury_in_stats_menu.png");
+    Texture2D cancel_add_planet_blank = LoadTexture("Images/add_planet_cancel_blank_button.png"); // blank for cancel button
+    Texture2D pluton_in_stats = LoadTexture("Images/mercury_in_stats_menu.png"); // pluton stats 
+    Texture2D black_hole = LoadTexture("Images/black_hole_menu.png"); // black hole menu with planets to choose 
     while (!WindowShouldClose())
     {
         BeginDrawing();
@@ -90,9 +91,8 @@ int main()
         draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
 
         menu_show(blank_info, menu, stats, checker, info, pluton_in_stats);
-
-        functions_menu(functions, Checker, exit_button, checker_exit_button, exit_menu, options_checker, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Sun, pluton, add_planet_menu, cancel_add_planet, cancel_add_planet_blank);
-
+        functions_menu(functions, Checker, exit_button, checker_exit_button, exit_menu, options_checker, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Sun, pluton, add_planet_menu, cancel_add_planet, cancel_add_planet_blank,black_hole);
+      
         EndDrawing();
     }
 
@@ -125,6 +125,8 @@ int main()
     UnloadTexture(cancel_add_planet);
     UnloadTexture(cancel_add_planet_blank);
     UnloadTexture(pluton_in_stats);
+    UnloadTexture(black_hole);
+    
 }
 
 /*theta - calculates radians and radius and then converts them to x and y
@@ -223,13 +225,13 @@ void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D 
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_info && info_check == 0) // if the button is clicked and info_check is 0 (it hasn't been clicked before) the menu is shown and info_check becomes 1
     {
-        info_check++;
+        info_check = 1;
     }
     else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_info && info_check == 1) // if the button has already been clicked (info_check is 1), and it is clicked again it becomes 0 and the menu is not shown
     {
         info_check = 0;
     }
-    if (info_check > 0)
+    if (info_check == 1)
     {
         DrawTexture(menu, 1530, 95, WHITE);
 
@@ -352,7 +354,7 @@ void draw_planet(Texture2D planet, int& left, int& down, float& angle)
         Vector2{ planet.width / 2.f, planet.height / 2.f }, angle, WHITE);
 
 }
-void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank)
+void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank, Texture2D black_hole)
 {
 
     DrawTexture(exit_button, 20, 20, WHITE); // draw exit button
@@ -436,21 +438,23 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         {
             DrawTexture(Sun, align_sun::left, align_sun::down, YELLOW);
 
-            draw_planet(Mercury, align_mercury::left, align_mercury::down, align_mercury::angle);
-
-            draw_planet(Venus, align_venus::left, align_venus::down, align_venus::angle);
-
-            draw_planet(Earth, align_earth::left, align_earth::down, align_earth::angle);
-
-            draw_planet(Mars, align_mars::left, align_mars::down, align_mars::angle);
-
-            draw_planet(Jupiter, align_jupiter::left, align_jupiter::down, align_jupiter::angle);
-
-            draw_planet(Saturn, align_saturn::left, align_saturn::down, align_saturn::angle);
-
-            draw_planet(Uranus, align_uranus::left, align_uranus::down, align_uranus::angle);
-
-            draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
+            if (!black_hole_disappear[0])
+                draw_planet(Mercury, align_mercury::left, align_mercury::down, align_mercury::angle);
+            if (!black_hole_disappear[1])
+                draw_planet(Venus, align_venus::left, align_venus::down, align_venus::angle);
+            if (!black_hole_disappear[2])
+                draw_planet(Earth, align_earth::left, align_earth::down, align_earth::angle);
+            if (!black_hole_disappear[3])
+                draw_planet(Mars, align_mars::left, align_mars::down, align_mars::angle);
+            if (!black_hole_disappear[4])
+                draw_planet(Jupiter, align_jupiter::left, align_jupiter::down, align_jupiter::angle);
+            if (!black_hole_disappear[5])
+                draw_planet(Saturn, align_saturn::left, align_saturn::down, align_saturn::angle);
+            if (!black_hole_disappear[6])
+                draw_planet(Uranus, align_uranus::left, align_uranus::down, align_uranus::angle);
+            if (!black_hole_disappear[7])
+                draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
+            
 
             rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
@@ -472,22 +476,23 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         {
             DrawTexture(Sun, align_sun::left, align_sun::down, YELLOW);
 
-            draw_planet(Mercury, align_mercury::left, align_mercury::down, align_mercury::angle);
-
-            draw_planet(Venus, align_venus::left, align_venus::down, align_venus::angle);
-
-            draw_planet(Earth, align_earth::left, align_earth::down, align_earth::angle);
-
-            draw_planet(Mars, align_mars::left, align_mars::down, align_mars::angle);
-
-            draw_planet(Jupiter, align_jupiter::left, align_jupiter::down, align_jupiter::angle);
-
-            draw_planet(Saturn, align_saturn::left, align_saturn::down, align_saturn::angle);
-
-            draw_planet(Uranus, align_uranus::left, align_uranus::down, align_uranus::angle);
-
-            draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
-
+            if (!black_hole_disappear[0])
+                draw_planet(Mercury, align_mercury::left, align_mercury::down, align_mercury::angle);
+            if (!black_hole_disappear[1])
+                draw_planet(Venus, align_venus::left, align_venus::down, align_venus::angle);
+            if (!black_hole_disappear[2])
+                draw_planet(Earth, align_earth::left, align_earth::down, align_earth::angle);
+            if (!black_hole_disappear[3])
+                draw_planet(Mars, align_mars::left, align_mars::down, align_mars::angle);
+            if (!black_hole_disappear[4])
+                draw_planet(Jupiter, align_jupiter::left, align_jupiter::down, align_jupiter::angle);
+            if (!black_hole_disappear[5])
+                draw_planet(Saturn, align_saturn::left, align_saturn::down, align_saturn::angle);
+            if (!black_hole_disappear[6])
+                draw_planet(Uranus, align_uranus::left, align_uranus::down, align_uranus::angle);
+            if (!black_hole_disappear[7])
+                draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
+            
             rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
             rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
@@ -713,16 +718,73 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         {// first click
             check3 = 1;
         }
-        else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[2] && check4 == 1) // if the button is clicked and check4 is 0 (it hasn't been clicked before) the function is applied and check4 becomes 1 
+        else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[2] && check3 == 1) // if the button is clicked and check4 is 0 (it hasn't been clicked before) the function is applied and check4 becomes 1 
         {
-            check4 = 0;
+            check3 = 0;
             // second click (close)
         }
         if (check3 == 1)
         {
+            DrawTexture(black_hole,50, 750, WHITE); // black hole menu
 
+            DrawTexture(cancel_add_planet, 60, 780, BLANK); // checker 1
+            DrawTexture(cancel_add_planet, 113, 780,BLANK); // checker 2
+            DrawTexture(cancel_add_planet, 165, 780, BLANK); // checker 3
+            DrawTexture(cancel_add_planet, 219, 780, BLANK); // checker 4
+            DrawTexture(cancel_add_planet, 273, 780, BLANK); // checker 5
+            DrawTexture(cancel_add_planet, 326, 780, BLANK); // checker 6
+            DrawTexture(cancel_add_planet, 378, 780, BLANK); // checker 7
+            DrawTexture(cancel_add_planet, 432, 780, BLANK); // checker 8
+
+            bool check_hov[8] = { // checkers for the buttons
+                 CheckCollisionPointRec(GetMousePosition(), { 60, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 113, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 165, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 219, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 273, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 326, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 378, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            CheckCollisionPointRec(GetMousePosition(), { 432, 780, (float)cancel_add_planet.width, (float)cancel_add_planet.height }),
+            };
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[0]) // if mercury is selected
+            {               
+                black_hole_disappear[0] = 1;
+            }           
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[1])
+            {
+                black_hole_disappear[1] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[2])
+            {
+                black_hole_disappear[2] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[3])
+            {
+                black_hole_disappear[3] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[4])
+            {
+                black_hole_disappear[4] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[5])
+            {
+                black_hole_disappear[5] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[6])
+            {
+                black_hole_disappear[6] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hov[7])
+            {
+                black_hole_disappear[7] = 1;
+            }
+            
         }
-
+        if (all_of(black_hole_disappear.begin(), black_hole_disappear.end(), [](int a) {return a == 1; })) // if all planets are removed(one is left) , all return back
+        {
+            transform(black_hole_disappear.begin(), black_hole_disappear.end(), black_hole_disappear.begin(), [](int a) { return 0; }); // all return back
+        }
 
 
 
@@ -772,51 +834,104 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
                 check4 = 0;
 
             }
-            if (info_check > 0) // close add planet menu if info menu(stats menu) is opened 
+            if (info_check == 1) // close add planet menu if info menu(stats menu) is opened 
             {
                 check4 = 0;
 
             }
             //checkers for all the orbit buttons(check if to draw pluton and on each orbit)
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[0])
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[0] && remove_pluton[0] == 0)
             {
                 draw_on_orbit[0] = 1;
-
+                remove_pluton[0] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[1])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[0] && remove_pluton[0] == 1)
+            {
+                draw_on_orbit[0] = 0;
+                remove_pluton[0] = 0;
+            }
+
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[1] && remove_pluton[1] == 0)
             {
                 draw_on_orbit[1] = 1;
-
+                remove_pluton[1] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[2])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[1] && remove_pluton[1] == 1)
+            {
+                draw_on_orbit[1] = 0;
+                remove_pluton[1] = 0;
+            }
+
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[2] && remove_pluton[2] == 0)
             {
                 draw_on_orbit[2] = 1;
-
+                remove_pluton[2] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[3])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[2] && remove_pluton[2] == 1)
+            {
+                draw_on_orbit[2] = 0;
+                remove_pluton[2] = 0;
+            }
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[3] && remove_pluton[3] == 0)
             {
                 draw_on_orbit[3] = 1;
-
+                remove_pluton[3] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[4])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[3] && remove_pluton[3] == 1)
+            {
+                draw_on_orbit[3] = 0;
+                remove_pluton[3] = 0;
+            }
+
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[4] && remove_pluton[4] == 0)
             {
                 draw_on_orbit[4] = 1;
-
+                remove_pluton[4] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[5])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[4] && remove_pluton[4] == 1)
+            {
+                draw_on_orbit[4] = 0;
+                remove_pluton[4] = 0;
+            }
+
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[5] && remove_pluton[5] == 0)
             {
                 draw_on_orbit[5] = 1;
-
+                remove_pluton[5] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[6])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[5] && remove_pluton[5] == 1)
+            {
+                draw_on_orbit[5] = 0;
+                remove_pluton[5] = 0;
+            }
+
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[6] && remove_pluton[6] == 0)
             {
                 draw_on_orbit[6] = 1;
-
+                remove_pluton[6] = 1;
             }
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[7])
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[6] && remove_pluton[6] == 1)
+            {
+                draw_on_orbit[6] = 0;
+                remove_pluton[6] = 0;
+            }
+
+
+            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[7] && remove_pluton[7] == 0)
             {
                 draw_on_orbit[7] = 1;
-
+                remove_pluton[7] = 1;
+            }
+            else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_orbits[7] && remove_pluton[7] == 1)
+            {
+                draw_on_orbit[7] = 0;
+                remove_pluton[7] = 0;
             }
         }
 
@@ -829,6 +944,7 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
             static double a_1 = mercury::a, e_1 = mercury::e, peri_1 = mercury::perihelionAngle;
             static float angle_1 = 0.f;
             static int left_1 = 830, down_1 = 385;
+            
             draw_planet(pluton, left_1, down_1, angle_1);
             if (check1 == 1) // rotate backward if change direction is pressed
             {

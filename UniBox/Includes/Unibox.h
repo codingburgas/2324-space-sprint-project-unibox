@@ -191,18 +191,19 @@ map <const char*, float> speeds =        // theoretical speeds in real life
 };
 namespace actual_speed // float value speed
 {
-	static float mercury_speed = 3.f; // 1
-	static float venus_speed = 2.f; //2
-	static float earth_speed = 1.f; //3
-	static float mars_speed = 0.5f; //4
-	static float jupiter_speed = 0.3f; //5
-	static float saturn_speed = 0.08f; //6
-	static float uranus_speed = 0.05f; //7
-	static float neptune_speed = 0.02f; //8
+	static float mercury_speed =0.7f; // 1
+	static float venus_speed = 0.5f; //2
+	static float earth_speed = 0.3f; //3
+	static float mars_speed = 0.1f; //4
+	static float jupiter_speed = 0.07f; //5
+	static float saturn_speed = 0.03f; //6
+	static float uranus_speed = 0.02f; //7
+	static float neptune_speed = 0.009f; //8
 
 }
 vector <bool> draw_on_orbit(9); // checkers if pluton needs to be in the program
-static bool black_hole_disapppear[9];
+vector <bool> black_hole_disappear(8); // checkers if a planet needs to disappear
+bool remove_pluton[8]; // checkers if pluton has been already drawn and if it needs to be removed again(if any of the orbit buttons is clicked twice)
 //static float speed_pluton[9]
 void draw_planet(Texture2D, int&, int&, float&); // draw a texture using DrawTexturePro
 
@@ -219,9 +220,11 @@ string convert_float_to_str(float); // convert float to string
 // void stats_show(Texture2D planet, const char* name,Texture2D Close,const int align_left, const int align_down);
 
 void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
-void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank);
-static int info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
-static int check1, check2, check3, check4;
+void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank,Texture2D black_hole);
+  bool info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
+  bool check1, check2, check3, check4;
+ 
+
 
 
 	

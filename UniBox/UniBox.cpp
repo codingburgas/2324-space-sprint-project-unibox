@@ -186,10 +186,7 @@ void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, f
     Vector2 newp = rotate_point_back(angle, a, e, perihelionAngle, speed);
     left = newp.x;
     down = newp.y;
-    //rotate mercury
-    //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::perihelionAngle, 10.f);
-    //  align_mercury::left = newp.x ;
-    // align_mercury::down = newp.y ;
+  
 }
 string convert_float_to_str(float a) // convert float to string 
 {
@@ -197,18 +194,8 @@ string convert_float_to_str(float a) // convert float to string
     r << a; // gets float value
     string t; // temporary string
     r >> t; // converting the float value to a string
-    // if (a == speed::speed_sun || a == speed::speed_mercury || a == speed::speed_venus || a == speed::speed_earth || a == speed::speed_mars || a == speed::speed_jupiter || a == speed::speed_saturn || a == speed::speed_uranus || a == speed::speed_neptune)
-    // {
-    //     t+="kmh";
-    //     return t; 
-     //}
-    // else
     return t;
-    /* stringstream convert;
-    convert << temperatures["sun"];
-    string temp_string;
-    convert >> temp_string;
-    const char* temperature = temp_string.c_str(); // c_str() is used to convert string to const char * so it can be printed and taken as an argument */
+  // c_str() is used to convert string to const char * so it can be printed and taken as an argument */
 }
 void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D checker, Texture2D info, Texture2D pluton_in_stats)
 {

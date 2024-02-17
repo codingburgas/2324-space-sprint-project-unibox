@@ -49,24 +49,15 @@ int main()
         bool hover_quit = CheckCollisionPointRec(GetMousePosition(), // checker if quit button is hovered
             { 814, 620, (float)quit.width, (float)quit.height }); // 814 is left align, 620 is down align
 
-        static int end_program, start_game;
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hover_new_game)
-        {
-            start_game++;
-        }
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hover_quit)
-        {
-            end_program++;
-        }
-        if (end_program > 0) // close the program if quit is pressed (end_program is bigger than 0)
-        {
-            return 0;
-        }
-        if (start_game > 0) // continue to the main program if new game is pressed (start_game is bigger than 0)
         {
             break;
         }
-
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hover_quit)
+        {
+            return 0;
+        }
+        
         EndDrawing();
 
     }

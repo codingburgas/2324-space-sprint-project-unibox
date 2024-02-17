@@ -519,21 +519,57 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         {
             check2 = 1;
             // first click
+             speeds["Sun"]+=500.f;
+             speeds["Mercury"] += 500.f;
+             speeds["Venus"] += 500.f;
+             speeds["Earth"] += 500.f;
+             speeds["Mars"] += 500.f;
+             speeds["Jupiter"] += 500.f;
+             speeds["Saturn"] += 500.f;
+             speeds["Uranus"] += 500.f;
+             speeds["Neptune"] += 500.f;
         }
         else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[1] && check2 == 1)
         {
             check2 = 2;
             // second click
+             speeds["Sun"]+=500.f;
+             speeds["Mercury"] += 500.f;
+             speeds["Venus"] += 500.f;
+             speeds["Earth"] += 500.f;
+             speeds["Mars"] += 500.f;
+             speeds["Jupiter"] += 500.f;
+             speeds["Saturn"] += 500.f;
+             speeds["Uranus"] += 500.f;
+             speeds["Neptune"] += 500.f;
         }
         else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[1] && check2 == 2)
         {
             check2 = 3;
             // third click
+             speeds["Sun"]+=500.f;
+             speeds["Mercury"] += 500.f;
+             speeds["Venus"] += 500.f;
+             speeds["Earth"] += 500.f;
+             speeds["Mars"] += 500.f;
+             speeds["Jupiter"] += 500.f;
+             speeds["Saturn"] += 500.f;
+             speeds["Uranus"] += 500.f;
+             speeds["Neptune"] += 500.f;
         }
         else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[1] && check2 == 3)
         {
             check2 = 0;
             // fourth click(return to default)
+            speeds["Sun"] -= 1500.f;
+            speeds["Mercury"] -= 1500.f;
+            speeds["Venus"] -= 1500.f;
+            speeds["Earth"] -= 1500.f;
+            speeds["Mars"] -= 1500.f;
+            speeds["Jupiter"] -= 1500.f;
+            speeds["Saturn"] -= 1500.f;
+            speeds["Uranus"] -= 1500.f;
+            speeds["Neptune"] -= 1500.f;
         }
 
 

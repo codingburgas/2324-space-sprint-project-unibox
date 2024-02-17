@@ -278,14 +278,14 @@ void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D 
               DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
               DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
               DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
-              DrawText("1100", left_speed[7] + 20, align_speed_down[7] + 60 + 51, text_size, WHITE);
+              DrawText("1100", left_speed[7] + 16, align_speed_down[7] + 60 + 51, text_size, WHITE);
              }
             if (check2 == 3)
             {
             DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
             DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
             DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
-            DrawText("1600", left_speed[7] + 20, align_speed_down[7] + 60 + 51, text_size, WHITE);     
+            DrawText("1600", left_speed[7] + 12, align_speed_down[7] + 60 + 51, text_size, WHITE);     
             }
            
             }

@@ -834,7 +834,7 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
 
 
-        static int show_pluton, add_pluton_to_stats;
+       
         // add planet
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[3] && check4 == 0) // if the button is clicked and check4 is 0 (it hasn't been clicked before) the function is applied and check4 becomes 1 
         {

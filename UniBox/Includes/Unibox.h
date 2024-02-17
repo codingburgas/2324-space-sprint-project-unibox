@@ -191,14 +191,14 @@ map <const char*, float> speeds =        // theoretical speeds in real life
 };
 namespace actual_speed // float value speed
 {
-	static float mercury_speed =0.7f; // 1
-	static float venus_speed = 0.5f; //2
-	static float earth_speed = 0.3f; //3
-	static float mars_speed = 0.1f; //4
-	static float jupiter_speed = 0.07f; //5
-	static float saturn_speed = 0.03f; //6
-	static float uranus_speed = 0.02f; //7
-	static float neptune_speed = 0.009f; //8
+	 float mercury_speed =0.7f; // 1
+	 float venus_speed = 0.5f; //2
+	 float earth_speed = 0.3f; //3
+	 float mars_speed = 0.1f; //4
+	 float jupiter_speed = 0.07f; //5
+         float saturn_speed = 0.03f; //6
+	 float uranus_speed = 0.02f; //7
+	 float neptune_speed = 0.009f; //8
 
 }
 vector <bool> draw_on_orbit(9); // checkers if pluton needs to be in the program
@@ -222,7 +222,7 @@ string convert_float_to_str(float); // convert float to string
 void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
 void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank,Texture2D black_hole);
   bool info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
-  bool check1, check2, check3, check4;
+
  
 
 

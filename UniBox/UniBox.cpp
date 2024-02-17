@@ -438,8 +438,6 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         DrawTexture(Checker, 0, 432, BLANK);
         DrawTexture(Checker, 0, 562, BLANK);
 
-        static int check1, check2, check3, check4; // variable used to check if a button is pressed and how many times
-
         bool check_hover[4] =
         {
             CheckCollisionPointRec(GetMousePosition(), {0, 172, (float)Checker.width, (float)Checker.height}), // check hover change direction

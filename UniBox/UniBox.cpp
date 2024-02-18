@@ -145,12 +145,12 @@ void draw_orbit(const double a, const double e, const double perihelionAngle)
 Vector2 rotate_point(float& angle, float a, float e, float perihelionAngle, float speed)
 {
 
-    float radians = (angle + perihelionAngle) * DEG2RAD;
-    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle));
-    angle += speed;
+    float radians = (angle + perihelionAngle) * DEG2RAD; // calculates the angle in radians
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // calculates the radius
+    angle += speed; // increments the angle by adding the rotation speed
     if (angle > 360.f)
         angle = 0.f;
-    return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) };
+    return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) }; // returns x and y
 
 }
 Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed)

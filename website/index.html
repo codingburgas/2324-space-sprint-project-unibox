@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>UniBox</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,19 +13,42 @@
   <body>
                              <!-- NAVBAR -->
     <nav class="navbar is-flex nav-background-color is-justify-content-center">
-            <img src="./photos/logo.svg" width="170">
+            <img src="./photos/logo.svg" width="170" >
     </nav>
 
                             <!--  CALL TO ACTION SECTION -->
-  <section class="section">
-    <div class="container">
-            <h1 class="title text-color">
-                Hello World
-            </h1>
-            <p class="subtitle text-color">
-                My first website with Whereas <strong>Bulma</strong>!
-      </p>
+  <section class="section-full-screen bg-img-st is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+    <h1 class="welcome-heading text-color mt-6">Welcome To UniBox</h1>
+    <p class="text-color welcome-paragraph mb-6">Make your visualization about solar system cleaner</p>
+    <form method="GET" class="mt-6"  action="https://github.com/MVKoleva21/TBA/releases/download/v1.0/release-windows-x64.7z">
+      <button type="submit" class="action-button mt-6">DOWNLOAD</button>
+ </form> 
+</section>
+
+  <section class="sections-size">
+    <div class="is-flex is-flex-direction-row is-align-items-center is-justify-content-space-around custom-div-styling-nd-section">
+
+      <div class="custom-strucuture-nd-section is-flex is-flex-direction-column mt-6">
+
+    <div class="mt-6">
+    <p class="text-color  sc-section-styling-1 is-size-2  mt-6">WHAT IS</p>
+    <h1 class="text-color sc-section-styling-2 ">UniBox</h1>
     </div>
-  </section>
+
+    <p class="text-color is-size-4 ">
+       Our solar system sandbox is an interactive simulation
+       <br>allowing users to adjust speed, add black holes, planets, 
+       <br>and change directions, providing an educational
+       <br> experience in celestial mechanics and space exploration.</p>
+       <button type="submit" class="action-button mb-6">PREVIEW</button>
+      </div>
+
+       <div>
+        <img src="./photos/sc-section-photo.svg">
+      </div>
+
+      </div>
+    </section>
+
   </body>
 </html>

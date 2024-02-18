@@ -71,15 +71,7 @@ int main()
         DrawTexture(background, 5, 0, WHITE); // galaxy background
 
         // draw orbit of each
-        draw_orbit(sun::a, sun::e, sun::perihelionAngle);
-        draw_orbit(mercury::a, mercury::e, mercury::perihelionAngle);
-        draw_orbit(venus::a, venus::e, venus::perihelionAngle);
-        draw_orbit(earth::a, earth::e, earth::perihelionAngle);
-        draw_orbit(mars::a, mars::e, mars::perihelionAngle);
-        draw_orbit(jupiter::a, jupiter::e, jupiter::perihelionAngle);
-        draw_orbit(saturn::a, saturn::e, saturn::perihelionAngle);
-        draw_orbit(uranus::a, uranus::e, uranus::perihelionAngle);
-        draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
+        draw_orbit_all();
 
         menu_show(blank_info, menu, stats, checker, info, pluton_in_stats);
         functions_menu(functions, Checker, exit_button, checker_exit_button, exit_menu, options_checker, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Sun, pluton, add_planet_menu, cancel_add_planet, cancel_add_planet_blank,black_hole);

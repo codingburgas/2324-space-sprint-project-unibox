@@ -133,12 +133,12 @@ void draw_orbit(const double a, const double e, const double perihelionAngle)
 
     for (double theta = 0.0; theta <= 360.0; theta++)
     {
-        double radians = (theta + perihelionAngle) * DEG2RAD;
-        double radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle));
-        double x = screenWidth / 2 + radius * cos(radians);
-        double y = screenHeight / 2 + radius * sin(radians);
+        double radians = (theta + perihelionAngle) * DEG2RAD; // angle in radians
+        double radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // radius at the given angle
+        double x = screenWidth / 2 + radius * cos(radians); // calculates x
+        double y = screenHeight / 2 + radius * sin(radians); // calculates y 
 
-        DrawPixel((int)x, (int)y, WHITE);
+        DrawPixel((int)x, (int)y, WHITE); // draws a pixel at the calculated position
     }
 }
 

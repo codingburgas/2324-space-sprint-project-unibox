@@ -51,11 +51,11 @@ int main()
 
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hover_new_game)
         {
-            break;
+            break; // continue to the game if the new game button is pressed
         }
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hover_quit)
         {
-            return 0;
+            return 0; // end the program if the quit button is pressed
         }
         
         EndDrawing();

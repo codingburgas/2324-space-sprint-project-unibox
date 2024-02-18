@@ -366,16 +366,16 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
     bool check_exit = CheckCollisionPointRec(GetMousePosition(), { 20,20,(float)checker_exit_button.width,(float)checker_exit_button.height }); // exit button check if it is hovered
 
-    static int check_to_show;
+    
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_exit && check_to_show == 0) // if the button is clicked and check_to_show is 0 (it hasn't been clicked before) the functions are shown and check_to_show becomes 1
     {
-        check_to_show++;
+        check_to_show = 1;
     }
     else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_exit && check_to_show == 1) // if the button has already been clicked (info_check is 1), and it is clicked again it becomes 0 and the menu is not shown
     {
         check_to_show = 0;
     }
-    if (check_to_show > 0) // if the exit button is clicked
+    if (check_to_show == 1) // if the exit button is clicked
     {
         // draw exit menu and make its options usable if it the exit options button is pressed( check_to_show is bigger than 0)
 

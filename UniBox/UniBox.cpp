@@ -86,7 +86,7 @@ int main()
       
         EndDrawing();
     }
-
+    // unload the textures
     UnloadTexture(background);
     UnloadTexture(stats);
     UnloadTexture(Sun);

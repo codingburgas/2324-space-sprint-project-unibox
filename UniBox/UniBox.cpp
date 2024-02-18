@@ -198,12 +198,10 @@ void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D 
 
     bool check_hover_info = CheckCollisionPointRec(GetMousePosition(), { 1665, 20, (float)blank_info.width, (float)blank_info.height });
 
-    if (true) // like while(true) but it is an if statement inside an while(!WindowShouldClose) loop, same like while(true)
-    {
         DrawTexture(info, 1665, 20, WHITE); // draw info button, 1665 is left(x) and 20 is down(y)
 
         DrawTexture(blank_info, 1665, 20, BLANK); // use this texture as an invisible filler, so that the info button works
-    }
+    
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_info && info_check == 0) // if the button is clicked and info_check is 0 (it hasn't been clicked before) the menu is shown and info_check becomes 1
     {
         info_check = 1;

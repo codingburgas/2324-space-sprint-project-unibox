@@ -75,7 +75,7 @@ namespace neptune
 
 // draw orbit
 void draw_orbit(const double, const double, const double);
-
+void draw_orbit_all();
 // alignments of different planets and the sun
 
 namespace align_sun

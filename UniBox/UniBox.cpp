@@ -164,10 +164,10 @@ Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle,
 }
 void rotate_planet(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down)
 {
-    Vector2 newp = rotate_point(angle, a, e, perihelionAngle, speed);
-    left = newp.x;
-    down = newp.y;
-    //rotate mercury
+    Vector2 newp = rotate_point(angle, a, e, perihelionAngle, speed); // calculate the new position
+    left = newp.x; // assign x
+    down = newp.y; // assign y
+    //rotate mercury example
     //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::perihelionAngle, 10.f);
     //  align_mercury::left = newp.x ;
     // align_mercury::down = newp.y ;

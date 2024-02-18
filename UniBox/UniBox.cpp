@@ -141,7 +141,18 @@ void draw_orbit(const double a, const double e, const double perihelionAngle)
         DrawPixel((int)x, (int)y, WHITE); // draws a pixel at the calculated position
     }
 }
-
+void draw_orbit_all()
+{
+     draw_orbit(sun::a, sun::e, sun::perihelionAngle);
+     draw_orbit(mercury::a, mercury::e, mercury::perihelionAngle);
+     draw_orbit(venus::a, venus::e, venus::perihelionAngle);
+     draw_orbit(earth::a, earth::e, earth::perihelionAngle);
+     draw_orbit(mars::a, mars::e, mars::perihelionAngle);
+     draw_orbit(jupiter::a, jupiter::e, jupiter::perihelionAngle);
+     draw_orbit(saturn::a, saturn::e, saturn::perihelionAngle);
+     draw_orbit(uranus::a, uranus::e, uranus::perihelionAngle);
+     draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
+}
 Vector2 rotate_point(float& angle, float a, float e, float perihelionAngle, float speed)
 {
 

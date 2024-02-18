@@ -7,10 +7,36 @@
     padding: 0;
     box-sizing: border-box;
     font-family: itim;
+    
   }
-  
+  :root
+  {
+    background-color: #52585C;
+  }
   body {
+    height: 100vh;
     background-color: #2B2F31 !important;
+  }
+
+              /* CUSTOM SCROLLBAR  */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+/* Styles for the ::-webkit-scrollbar-thumb pseudo-element */
+::-webkit-scrollbar-thumb {
+  background-color: #48576a; /* Background color of the scrollbar thumb */
+  border-radius: 45px; /* Border radius of the scrollbar thumb */
+}
+
+/* Styles for the ::-webkit-scrollbar-thumb pseudo-element when hovered */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2d3950; /* Background color of the scrollbar thumb on hover */
+}
+
+              /* FIRST SECTION STYLING  */
+  .sections-size{
+    width: 100vw;
+    height: 100vh;
   }
   .nav-background-color
   {
@@ -19,6 +45,57 @@
   .text-color{
     color: #E8E6E3 !important;
   }
-  .separater{
-    background-color: #2A2A2A !important;
+  .bg-img-st{
+    background-image: url(./photos/bg-img.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
+  .welcome-heading{
+    font-size: 80px;
+  }
+  .welcome-paragraph{
+    font-size: 30px;
+  }
+  .action-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: itim;
+    cursor: pointer;
+    font-size: 30px;
+    border: #C4C4C4 2px solid !important;
+    color: #E8E6E3;
+    width: 15vw;
+    height: 8vh !important;
+    border-radius: 19px !important;
+    background-color: transparent !important;
+    transition: 0.2s;
+  }
+  .action-button:hover{
+    background-color: #C4C4C4 !important;
+    color: #2B2F31;
+  }
+              /*SECOND SECTION STYLING  */
+
+  .section-full-screen
+  {
+    width: 100wh;
+    height: calc(100% - 50px);
+  }
+  .custom-div-styling-nd-section{
+    width: 100vw;
+    height: 100vh;
+  }
+  .sc-section-styling-1{
+    letter-spacing: 1vw;
+  }
+  .sc-section-styling-2{
+    font-size: 90px;
+    letter-spacing: 10px;
+  }
+  .custom-strucuture-nd-section{
+    height: 100vh;
+    gap: 10%;
+  }
+  

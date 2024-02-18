@@ -204,7 +204,7 @@ namespace actual_speed // float value speed
 vector <bool> draw_on_orbit(9); // checkers if pluton needs to be in the program
 vector <bool> black_hole_disappear(8); // checkers if a planet needs to disappear
 bool remove_pluton[8]; // checkers if pluton has been already drawn and if it needs to be removed again(if any of the orbit buttons is clicked twice)
-//static float speed_pluton[9]
+
 void draw_planet(Texture2D, int&, int&, float&); // draw a texture using DrawTexturePro
 
 Vector2 rotate_point(float&, float, float, float, float);

@@ -106,20 +106,19 @@
   }
   .custom-section-space{
     width: 100vw;
-    height: 200vh;
+    height: 250vh;
   }
   .container-for-all{
     width: 100vw;
-    height: 200vh;
-    gap: 7vw;
+    height: 250vh;
+    gap: 8vw;
   }
-.container-for-one,
-.container-for-two
+.container-for-one
 {
   gap: 28vw;
 } 
 .text-container{
-  width: 30vw;
+  width: 37vw;
 }
 .photo-container-for-all{
   width: 25vw;

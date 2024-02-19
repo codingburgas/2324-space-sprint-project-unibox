@@ -111,7 +111,7 @@
   .container-for-all{
     width: 100vw;
     height: 200vh;
-    /* gap: 28vw; */
+    gap: 7vw;
   }
 .container-for-one,
 .container-for-two

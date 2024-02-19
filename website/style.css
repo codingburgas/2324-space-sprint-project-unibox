@@ -98,4 +98,35 @@
     height: 100vh;
     gap: 10%;
   }
+  .separater-div-for-section{
+    width: 100%;
+    height: 10%;
+    background-color: #2A2A2A;
+    padding-left: 5%;
+  }
+  .custom-section-space{
+    width: 100vw;
+    height: 200vh;
+  }
+  .container-for-all{
+    width: 100vw;
+    height: 200vh;
+    /* gap: 28vw; */
+  }
+.container-for-one,
+.container-for-two
+{
+  gap: 28vw;
+} 
+.text-container{
+  width: 30vw;
+}
+.photo-container{
+  background-image: url(./photos/St-container.svg);
+  width: 25vw;
+  height: 35vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   
+}

@@ -121,12 +121,22 @@
 .text-container{
   width: 30vw;
 }
-.photo-container{
-  background-image: url(./photos/St-container.svg);
+.photo-container-for-all{
   width: 25vw;
   height: 35vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  
+}
+.photo-container-1{
+  background-image: url(./photos/St-container.svg);
+}
+.photo-container-2{
+  background-image: url(./photos/nd-container.svg);
+}
+.photo-container-3{
+  background-image: url(./photos/rd-container.svg);
+}
+.photo-container-4{
+  background-image: url(./photos/th-container.svg);
 }

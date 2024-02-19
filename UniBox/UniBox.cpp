@@ -120,13 +120,13 @@ y - ordinate for vertical y
 x and y are positioning the 2D texture just like a function(x,y) would be placed in a coordinate system
 DrawPixel() - drawing
 */
-void draw_orbit(const double a, const double e, const double perihelionAngle)
+void draw_orbit(const double a, const double e, const double peri_pluton::peri_helionAngle)
 {
 
     for (double theta = 0.0; theta <= 360.0; theta++)
     {
-        double radians = (theta + perihelionAngle) * DEG2RAD; // angle in radians
-        double radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // radius at the given angle
+        double radians = (theta + peri_pluton::peri_helionAngle) * DEG2RAD; // angle in radians
+        double radius = a * (1 - e * e) / (1 + e * cos(radians - peri_pluton::peri_helionAngle)); // radius at the given angle
         double x = screenWidth / 2 + radius * cos(radians); // calculates x
         double y = screenHeight / 2 + radius * sin(radians); // calculates y 
 
@@ -135,49 +135,49 @@ void draw_orbit(const double a, const double e, const double perihelionAngle)
 }
 void draw_orbit_all()
 {
-     draw_orbit(sun::a, sun::e, sun::perihelionAngle);
-     draw_orbit(mercury::a, mercury::e, mercury::perihelionAngle);
-     draw_orbit(venus::a, venus::e, venus::perihelionAngle);
-     draw_orbit(earth::a, earth::e, earth::perihelionAngle);
-     draw_orbit(mars::a, mars::e, mars::perihelionAngle);
-     draw_orbit(jupiter::a, jupiter::e, jupiter::perihelionAngle);
-     draw_orbit(saturn::a, saturn::e, saturn::perihelionAngle);
-     draw_orbit(uranus::a, uranus::e, uranus::perihelionAngle);
-     draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
+     draw_orbit(sun::a, sun::e, sun::peri_pluton::peri_helionAngle);
+     draw_orbit(mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle);
+     draw_orbit(venus::a, venus::e, venus::peri_pluton::peri_helionAngle);
+     draw_orbit(earth::a, earth::e, earth::peri_pluton::peri_helionAngle);
+     draw_orbit(mars::a, mars::e, mars::peri_pluton::peri_helionAngle);
+     draw_orbit(jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle);
+     draw_orbit(saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle);
+     draw_orbit(uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle);
+     draw_orbit(neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle);
 }
-Vector2 rotate_point(float& angle, float a, float e, float perihelionAngle, float speed)
+Vector2 rotate_point(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed)
 {
 
-    float radians = (angle + perihelionAngle) * DEG2RAD; // calculates the angle in radians
-    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // calculates the radius
+    float radians = (angle + peri_pluton::peri_helionAngle) * DEG2RAD; // calculates the angle in radians
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - peri_pluton::peri_helionAngle)); // calculates the radius
     angle += speed; // increments the angle by adding the rotation speed
     if (angle > 360.f)
         angle = 0.f;
     return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) }; // returns x and y
 
 }
-Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed)
+Vector2 rotate_point_back(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed)
 {
-    float radians = (angle + perihelionAngle) * DEG2RAD; // calculates the angle in radians
-    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // calculates the radius
+    float radians = (angle + peri_pluton::peri_helionAngle) * DEG2RAD; // calculates the angle in radians
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - peri_pluton::peri_helionAngle)); // calculates the radius
     angle -= speed; // increments the angle by adding the rotation speed
     if (angle < 0.f)
         angle = 360.f + angle;
     return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) }; // returns x and y
 }
-void rotate_planet(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down)
+void rotate_planet(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed, int& left, int& down)
 {
-    Vector2 newp = rotate_point(angle, a, e, perihelionAngle, speed); // calculate the new position
+    Vector2 newp = rotate_point(angle, a, e, peri_pluton::peri_helionAngle, speed); // calculate the new position
     left = newp.x; // assign x
     down = newp.y; // assign y
     //rotate mercury example
-    //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::perihelionAngle, 10.f);
+    //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::peri_pluton::peri_helionAngle, 10.f);
     //  align_mercury::left = newp.x ;
     // align_mercury::down = newp.y ;
 }
-void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down)
+void rotate_planet_back(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed, int& left, int& down)
 {
-    Vector2 newp = rotate_point_back(angle, a, e, perihelionAngle, speed);
+    Vector2 newp = rotate_point_back(angle, a, e, peri_pluton::peri_helionAngle, speed);
     left = newp.x;
     down = newp.y;
   
@@ -458,21 +458,21 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
                 draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
             
 
-            rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
+            rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-            rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+            rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-            rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+            rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-            rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+            rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-            rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+            rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-            rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+            rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-            rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+            rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
 
-            rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+            rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
         }
         if (check1 == 0) // default (not clicked,right direction )
         {
@@ -495,21 +495,21 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
             if (!black_hole_disappear[7])
                 draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
             
-            rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
+            rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-            rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+            rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-            rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+            rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-            rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+            rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-            rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+            rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-            rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+            rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-            rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+            rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
 
-            rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+            rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
 
 
         }
@@ -582,39 +582,39 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////fix all////////////////////////////////////////////// and pluton//////////////////////////////////
             if (check1 == 0)// if not clicked right direction, use rotate_point
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
             }
             if (check1 == 1) // if clicked left direction, use rotate_point_back 
             {
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
             }
 
         }
@@ -624,41 +624,41 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
             //first click
             if (check1 == 0)
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
 
             }
             if (check1 == 1)
             {
 
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
             }
         }
         if (check2 == 2)
@@ -667,39 +667,39 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
             if (check1 == 0)// if not clicked right direction, use rotate_point
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
             }
             if (check1 == 1) // if clicked left direction, use rotate_point_back 
             {
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
 
             }
 
@@ -711,39 +711,39 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
             if (check1 == 0)// if not clicked right direction, use rotate_point
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
             }
             if (check1 == 1) // if clicked left direction, use rotate_point_back 
             {
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
 
             }
         }
@@ -976,263 +976,234 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         // draw pluton if orbit is clicked
         if (draw_on_orbit[0] == 1)
         {
-
-
-            static float speed_1 = 2.f;
-            static double a_1 = mercury::a, e_1 = mercury::e, peri_1 = mercury::perihelionAngle;
-            static float angle_1 = 0.f;
-            static int left_1 = 830, down_1 = 385;
-            
-            draw_planet(pluton, left_1, down_1, angle_1);
+     
+            draw_planet(pluton, left_pluton::left_1, down_pluton::down_1, angle_pluton::angle_1);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
                 //change speed if needed, just like in the check2 ifs above but it is put here
                 if (check2 == 0)
-                    rotate_planet_back(angle_1, a_1, e_1, peri_1, speed_1 / 2, left_1, down_1);
+                    rotate_planet_back(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2, left_pluton::left_1, down_pluton::down_1);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_1, a_1, e_1, peri_1, speed_1 / 2 + 0.5f, left_1, down_1);
+                    rotate_planet_back(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2 + 0.5f, left_pluton::left_1, down_pluton::down_1);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_1, a_1, e_1, peri_1, speed_1 / 2 + 1.f, left_1, down_1);
+                    rotate_planet_back(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2 + 1.f, left_pluton::left_1, down_pluton::down_1);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_1, a_1, e_1, peri_1, speed_1 / 2 + 1.5f, left_1, down_1);
+                    rotate_planet_back(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2 + 1.5f, left_pluton::left_1, down_pluton::down_1);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_1, a_1, e_1, peri_1, speed_1 / 2, left_1, down_1);
+                    rotate_planet(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2, left_pluton::left_1, down_pluton::down_1);
                 else if (check2 == 1)
-                    rotate_planet(angle_1, a_1, e_1, peri_1, speed_1 / 2 + 0.5f, left_1, down_1);
+                    rotate_planet(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2 + 0.5f, left_pluton::left_1, down_pluton::down_1);
                 else if (check2 == 2)
-                    rotate_planet(angle_1, a_1, e_1, peri_1, speed_1 / 2 + 1.f, left_1, down_1);
+                    rotate_planet(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2 + 1.f, left_pluton::left_1, down_pluton::down_1);
                 else if (check2 == 3)
-                    rotate_planet(angle_1, a_1, e_1, peri_1, speed_1 / 2 + 1.5f, left_1, down_1);
+                    rotate_planet(angle_pluton::angle_1, a_pluton::a_1, e_pluton::e_1, peri_pluton::peri_1, speed_pluton::speed_1 / 2 + 1.5f, left_pluton::left_1, down_pluton::down_1);
             }
 
         }
         if (draw_on_orbit[1] == 1)
         {
 
-
-            static float speed_2 = 1.8f;
-            static double a_2 = venus::a, e_2 = venus::e, peri_2 = venus::perihelionAngle;
-            static float angle_2 = 0.f;
-            static int left_2 = 800, down_2 = 390;
-            draw_planet(pluton, left_2, down_2, angle_2);
+            draw_planet(pluton, left_pluton::left_2, down_pluton::down_2, angle_pluton::angle_2);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet_back(angle_2, a_2, e_2, peri_2, speed_2 / 2, left_2, down_2);
+                    rotate_planet_back(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2, left_pluton::left_2, down_pluton::down_2);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_2, a_2, e_2, peri_2, speed_2 / 2 + 0.5f, left_2, down_2);
+                    rotate_planet_back(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2 + 0.5f, left_pluton::left_2, down_pluton::down_2);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_2, a_2, e_2, peri_2, speed_2 / 2 + 1.f, left_2, down_2);
+                    rotate_planet_back(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2 + 1.f, left_pluton::left_2, down_pluton::down_2);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_2, a_2, e_2, peri_2, speed_2 / 2 + 1.5f, left_2, down_2);
+                    rotate_planet_back(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2 + 1.5f, left_pluton::left_2, down_pluton::down_2);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_2, a_2, e_2, peri_2, speed_2 / 2, left_2, down_2);
+                    rotate_planet(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2, left_pluton::left_2, down_pluton::down_2);
                 else if (check2 == 1)
-                    rotate_planet(angle_2, a_2, e_2, peri_2, speed_2 / 2 + 0.5f, left_2, down_2);
+                    rotate_planet(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2 + 0.5f, left_pluton::left_2, down_pluton::down_2);
                 else if (check2 == 2)
-                    rotate_planet(angle_2, a_2, e_2, peri_2, speed_2 / 2 + 1.f, left_2, down_2);
+                    rotate_planet(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2 + 1.f, left_pluton::left_2, down_pluton::down_2);
                 else if (check2 == 3)
-                    rotate_planet(angle_2, a_2, e_2, peri_2, speed_2 / 2 + 1.5f, left_2, down_2);
+                    rotate_planet(angle_pluton::angle_2, a_pluton::a_2, e_pluton::e_2, peri_pluton::peri_2, speed_pluton::speed_2 / 2 + 1.5f, left_pluton::left_2, down_pluton::down_2);
             }
 
         }
         if (draw_on_orbit[2] == 1)
         {
 
-            static float speed_3 = 1.6f;
-            static double a_3 = earth::a, e_3 = earth::e, peri_3 = earth::perihelionAngle;
-            static float angle_3 = 0.f;
-            static int left_3 = 700, down_3 = 400;
-            draw_planet(pluton, left_3, down_3, angle_3);
+           
+            draw_planet(pluton, left_pluton::left_3, down_pluton::down_3, angle_pluton::angle_3);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet_back(angle_3, a_3, e_3, peri_3, speed_3 / 2, left_3, down_3);
+                    rotate_planet_back(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2, left_pluton::left_3, down_pluton::down_3);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_3, a_3, e_3, peri_3, speed_3 / 2 + 0.5f, left_3, down_3);
+                    rotate_planet_back(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2 + 0.5f, left_pluton::left_3, down_pluton::down_3);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_3, a_3, e_3, peri_3, speed_3 / 2 + 1.f, left_3, down_3);
+                    rotate_planet_back(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2 + 1.f, left_pluton::left_3, down_pluton::down_3);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_3, a_3, e_3, peri_3, speed_3 / 2 + 1.5f, left_3, down_3);
+                    rotate_planet_back(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2 + 1.5f, left_pluton::left_3, down_pluton::down_3);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_3, a_3, e_3, peri_3, speed_3 / 2, left_3, down_3);
+                    rotate_planet(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2, left_pluton::left_3, down_pluton::down_3);
                 else if (check2 == 1)
-                    rotate_planet(angle_3, a_3, e_3, peri_3, speed_3 / 2 + 0.5f, left_3, down_3);
+                    rotate_planet(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2 + 0.5f, left_pluton::left_3, down_pluton::down_3);
                 else if (check2 == 2)
-                    rotate_planet(angle_3, a_3, e_3, peri_3, speed_3 / 2 + 1.f, left_3, down_3);
+                    rotate_planet(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2 + 1.f, left_pluton::left_3, down_pluton::down_3);
                 else if (check2 == 3)
-                    rotate_planet(angle_3, a_3, e_3, peri_3, speed_3 / 2 + 1.5f, left_3, down_3);
+                    rotate_planet(angle_pluton::angle_3, a_pluton::a_3, e_pluton::e_3, peri_pluton::peri_3, speed_pluton::speed_3 / 2 + 1.5f, left_pluton::left_3, down_pluton::down_3);
             }
         }
         if (draw_on_orbit[3] == 1)
         {
 
-            static float speed_4 = 1.4f;
-            static double a_4 = mars::a, e_4 = mars::e, peri_4 = mars::perihelionAngle;
-            static float angle_4 = 1.3f;
-            static int left_4 = 659, down_4 = 405;
-            draw_planet(pluton, left_4, down_4, angle_4);
+          
+            draw_planet(pluton, left_pluton::left_4, down_pluton::down_4, angle_pluton::angle_4);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
 
                 if (check2 == 0)
-                    rotate_planet_back(angle_4, a_4, e_4, peri_4, speed_4 / 2, left_4, down_4);
+                    rotate_planet_back(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2, left_pluton::left_4, down_pluton::down_4);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_4, a_4, e_4, peri_4, speed_4 / 2 + 0.5f, left_4, down_4);
+                    rotate_planet_back(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2 + 0.5f, left_pluton::left_4, down_pluton::down_4);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_4, a_4, e_4, peri_4, speed_4 / 2 + 1.f, left_4, down_4);
+                    rotate_planet_back(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2 + 1.f, left_pluton::left_4, down_pluton::down_4);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_4, a_4, e_4, peri_4, speed_4 / 2 + 1.5f, left_4, down_4);
+                    rotate_planet_back(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2 + 1.5f, left_pluton::left_4, down_pluton::down_4);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_4, a_4, e_4, peri_4, speed_4 / 2, left_4, down_4);
+                    rotate_planet(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2, left_pluton::left_4, down_pluton::down_4);
                 else if (check2 == 1)
-                    rotate_planet(angle_4, a_4, e_4, peri_4, speed_4 / 2 + 0.5f, left_4, down_4);
+                    rotate_planet(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2 + 0.5f, left_pluton::left_4, down_pluton::down_4);
                 else if (check2 == 2)
-                    rotate_planet(angle_4, a_4, e_4, peri_4, speed_4 / 2 + 1.f, left_4, down_4);
+                    rotate_planet(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2 + 1.f, left_pluton::left_4, down_pluton::down_4);
                 else if (check2 == 3)
-                    rotate_planet(angle_4, a_4, e_4, peri_4, speed_4 / 2 + 1.5f, left_4, down_4);
+                    rotate_planet(angle_pluton::angle_4, a_pluton::a_4, e_pluton::e_4, peri_pluton::peri_4, speed_pluton::speed_4 / 2 + 1.5f, left_pluton::left_4, down_pluton::down_4);
             }
         }
         if (draw_on_orbit[4] == 1)
         {
 
-            static float speed_5 = 1.2f;
-            static double a_5 = jupiter::a, e_5 = jupiter::e, peri_5 = jupiter::perihelionAngle;
-            static float angle_5 = 1.3f;
-            static int left_5 = 603, down_5 = 405;
-            draw_planet(pluton, left_5, down_5, angle_5);
+           
+            draw_planet(pluton, left_pluton::left_5, down_pluton::down_5, angle_pluton::angle_5);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
 
                 if (check2 == 0)
-                    rotate_planet_back(angle_5, a_5, e_5, peri_5, speed_5 / 2, left_5, down_5);
+                    rotate_planet_back(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2, left_pluton::left_5, down_pluton::down_5);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_5, a_5, e_5, peri_5, speed_5 / 2 + 0.5f, left_5, down_5);
+                    rotate_planet_back(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2 + 0.5f, left_pluton::left_5, down_pluton::down_5);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_5, a_5, e_5, peri_5, speed_5 / 2 + 1.f, left_5, down_5);
+                    rotate_planet_back(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2 + 1.f, left_pluton::left_5, down_pluton::down_5);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_5, a_5, e_5, peri_5, speed_5 / 2 + 1.5f, left_5, down_5);
+                    rotate_planet_back(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2 + 1.5f, left_pluton::left_5, down_pluton::down_5);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_5, a_5, e_5, peri_5, speed_5 / 2, left_5, down_5);
+                    rotate_planet(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2, left_pluton::left_5, down_pluton::down_5);
                 else if (check2 == 1)
-                    rotate_planet(angle_5, a_5, e_5, peri_5, speed_5 / 2 + 0.5f, left_5, down_5);
+                    rotate_planet(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2 + 0.5f, left_pluton::left_5, down_pluton::down_5);
                 else if (check2 == 2)
-                    rotate_planet(angle_5, a_5, e_5, peri_5, speed_5 / 2 + 1.f, left_5, down_5);
+                    rotate_planet(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2 + 1.f, left_pluton::left_5, down_pluton::down_5);
                 else if (check2 == 3)
-                    rotate_planet(angle_5, a_5, e_5, peri_5, speed_5 / 2 + 1.5f, left_5, down_5);
+                    rotate_planet(angle_pluton::angle_5, a_pluton::a_5, e_pluton::e_5, peri_pluton::peri_5, speed_pluton::speed_5 / 2 + 1.5f, left_pluton::left_5, down_pluton::down_5);
             }
         }
 
         if (draw_on_orbit[5] == 1)
         {
 
-            static float speed_6 = 0.9f;
-            static double a_6 = saturn::a, e_6 = saturn::e, peri_6 = saturn::perihelionAngle;
-            static float angle_6 = 1.3f;
-            static int left_6 = 494, down_6 = 375;
-            draw_planet(pluton, left_6, down_6, angle_6);
+            
+            draw_planet(pluton, left_pluton::left_6, down_pluton::down_6, angle_pluton::angle_6);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
 
                 if (check2 == 0)
-                    rotate_planet_back(angle_6, a_6, e_6, peri_6, speed_6 / 2, left_6, down_6);
+                    rotate_planet_back(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2, left_pluton::left_6, down_pluton::down_6);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_6, a_6, e_6, peri_6, speed_6 / 2 + 0.5f, left_6, down_6);
+                    rotate_planet_back(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2 + 0.5f, left_pluton::left_6, down_pluton::down_6);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_6, a_6, e_6, peri_6, speed_6 / 2 + 1.f, left_6, down_6);
+                    rotate_planet_back(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2 + 1.f, left_pluton::left_6, down_pluton::down_6);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_6, a_6, e_6, peri_6, speed_6 / 2 + 1.5f, left_6, down_6);
+                    rotate_planet_back(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2 + 1.5f, left_pluton::left_6, down_pluton::down_6);
 
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_6, a_6, e_6, peri_6, speed_6 / 2, left_6, down_6);
+                    rotate_planet(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2, left_pluton::left_6, down_pluton::down_6);
                 else if (check2 == 1)
-                    rotate_planet(angle_6, a_6, e_6, peri_6, speed_6 / 2 + 0.5f, left_6, down_6);
+                    rotate_planet(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2 + 0.5f, left_pluton::left_6, down_pluton::down_6);
                 else if (check2 == 2)
-                    rotate_planet(angle_6, a_6, e_6, peri_6, speed_6 / 2 + 1.f, left_6, down_6);
+                    rotate_planet(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2 + 1.f, left_pluton::left_6, down_pluton::down_6);
                 else if (check2 == 3)
-                    rotate_planet(angle_6, a_6, e_6, peri_6, speed_6 / 2 + 1.5f, left_6, down_6);
+                    rotate_planet(angle_pluton::angle_6, a_pluton::a_6, e_pluton::e_6, peri_pluton::peri_6, speed_pluton::speed_6 / 2 + 1.5f, left_pluton::left_6, down_pluton::down_6);
             }
         }
         if (draw_on_orbit[6] == 1)
         {
 
-            static float speed_7 = 0.7f;
-            static double a_7 = uranus::a, e_7 = uranus::e, peri_7 = uranus::perihelionAngle;
-            static float angle_7 = 1.3f;
-            static int left_7 = 510, down_7 = 410;
-            draw_planet(pluton, left_7, down_7, angle_7);
+           
+            draw_planet(pluton, left_pluton::left_7, down_pluton::down_7, angle_pluton::angle_7);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
 
                 if (check2 == 0)
-                    rotate_planet_back(angle_7, a_7, e_7, peri_7, speed_7, left_7, down_7);
+                    rotate_planet_back(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7, left_pluton::left_7, down_pluton::down_7);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_7, a_7, e_7, peri_7, speed_7 + 0.5f, left_7, down_7);
+                    rotate_planet_back(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7 + 0.5f, left_pluton::left_7, down_pluton::down_7);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_7, a_7, e_7, peri_7, speed_7 + 1.f, left_7, down_7);
+                    rotate_planet_back(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7 + 1.f, left_pluton::left_7, down_pluton::down_7);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_7, a_7, e_7, peri_7, speed_7 + 1.5f, left_7, down_7);
+                    rotate_planet_back(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7 + 1.5f, left_pluton::left_7, down_pluton::down_7);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_7, a_7, e_7, peri_7, speed_7, left_7, down_7);
+                    rotate_planet(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7, left_pluton::left_7, down_pluton::down_7);
                 else if (check2 == 1)
-                    rotate_planet(angle_7, a_7, e_7, peri_7, speed_7 + 0.5f, left_7, down_7);
+                    rotate_planet(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7 + 0.5f, left_pluton::left_7, down_pluton::down_7);
                 else if (check2 == 2)
-                    rotate_planet(angle_7, a_7, e_7, peri_7, speed_7 + 1.f, left_7, down_7);
+                    rotate_planet(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7 + 1.f, left_pluton::left_7, down_pluton::down_7);
                 else if (check2 == 3)
-                    rotate_planet(angle_7, a_7, e_7, peri_7, speed_7 + 1.5f, left_7, down_7);
+                    rotate_planet(angle_pluton::angle_7, a_pluton::a_7, e_pluton::e_7, peri_pluton::peri_7, speed_pluton::speed_7 + 1.5f, left_pluton::left_7, down_pluton::down_7);
             }
 
         }
         if (draw_on_orbit[7] == 1)
         {
 
-            static float speed_8 = 0.5f;
-            static double a_8 = neptune::a, e_8 = neptune::e, peri_8 = neptune::perihelionAngle;
-            static float angle_8 = 1.2f;
-            static int left_8 = 390, down_8 = 410;
-            draw_planet(pluton, left_8, down_8, angle_8);
+           
+            draw_planet(pluton, left_pluton::left_8, down_pluton::down_8, angle_pluton::angle_8);
             if (check1 == 1) // rotate backward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet_back(angle_8, a_8, e_8, peri_8, speed_8 / 2, left_8, down_8);
+                    rotate_planet_back(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2, left_pluton::left_8, down_pluton::down_8);
                 else if (check2 == 1)
-                    rotate_planet_back(angle_8, a_8, e_8, peri_8, speed_8 / 2 + 0.5f, left_8, down_8);
+                    rotate_planet_back(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2 + 0.5f, left_pluton::left_8, down_pluton::down_8);
                 else if (check2 == 2)
-                    rotate_planet_back(angle_8, a_8, e_8, peri_8, speed_8 / 2 + 1.f, left_8, down_8);
+                    rotate_planet_back(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2 + 1.f, left_pluton::left_8, down_pluton::down_8);
                 else if (check2 == 3)
-                    rotate_planet_back(angle_8, a_8, e_8, peri_8, speed_8 / 2 + 1.5f, left_8, down_8);
+                    rotate_planet_back(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2 + 1.5f, left_pluton::left_8, down_pluton::down_8);
             }
             if (check1 == 0) // rotate forward if change direction is pressed
             {
                 if (check2 == 0)
-                    rotate_planet(angle_8, a_8, e_8, peri_8, speed_8 / 2, left_8, down_8);
+                    rotate_planet(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2, left_pluton::left_8, down_pluton::down_8);
                 else if (check2 == 1)
-                    rotate_planet(angle_8, a_8, e_8, peri_8, speed_8 / 2 + 0.5f, left_8, down_8);
+                    rotate_planet(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2 + 0.5f, left_pluton::left_8, down_pluton::down_8);
                 else if (check2 == 2)
-                    rotate_planet(angle_8, a_8, e_8, peri_8, speed_8 / 2 + 1.f, left_8, down_8);
+                    rotate_planet(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2 + 1.f, left_pluton::left_8, down_pluton::down_8);
                 else if (check2 == 3)
-                    rotate_planet(angle_8, a_8, e_8, peri_8, speed_8 / 2 + 1.5f, left_8, down_8);
+                    rotate_planet(angle_pluton::angle_8, a_pluton::a_8, e_pluton::e_8, peri_pluton::peri_8, speed_pluton::speed_8 / 2 + 1.5f, left_pluton::left_8, down_pluton::down_8);
             }
 
         }

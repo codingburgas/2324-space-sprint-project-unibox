@@ -120,13 +120,13 @@ y - ordinate for vertical y
 x and y are positioning the 2D texture just like a function(x,y) would be placed in a coordinate system
 DrawPixel() - drawing
 */
-void draw_orbit(const double a, const double e, const double peri_pluton::peri_helionAngle)
+void draw_orbit(const double a, const double e, const double perihelionAngle)
 {
 
     for (double theta = 0.0; theta <= 360.0; theta++)
     {
-        double radians = (theta + peri_pluton::peri_helionAngle) * DEG2RAD; // angle in radians
-        double radius = a * (1 - e * e) / (1 + e * cos(radians - peri_pluton::peri_helionAngle)); // radius at the given angle
+        double radians = (theta + perihelionAngle) * DEG2RAD; // angle in radians
+        double radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // radius at the given angle
         double x = screenWidth / 2 + radius * cos(radians); // calculates x
         double y = screenHeight / 2 + radius * sin(radians); // calculates y 
 
@@ -135,52 +135,52 @@ void draw_orbit(const double a, const double e, const double peri_pluton::peri_h
 }
 void draw_orbit_all()
 {
-     draw_orbit(sun::a, sun::e, sun::peri_pluton::peri_helionAngle);
-     draw_orbit(mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle);
-     draw_orbit(venus::a, venus::e, venus::peri_pluton::peri_helionAngle);
-     draw_orbit(earth::a, earth::e, earth::peri_pluton::peri_helionAngle);
-     draw_orbit(mars::a, mars::e, mars::peri_pluton::peri_helionAngle);
-     draw_orbit(jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle);
-     draw_orbit(saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle);
-     draw_orbit(uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle);
-     draw_orbit(neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle);
+    draw_orbit(sun::a, sun::e, sun::perihelionAngle);
+    draw_orbit(mercury::a, mercury::e, mercury::perihelionAngle);
+    draw_orbit(venus::a, venus::e, venus::perihelionAngle);
+    draw_orbit(earth::a, earth::e, earth::perihelionAngle);
+    draw_orbit(mars::a, mars::e, mars::perihelionAngle);
+    draw_orbit(jupiter::a, jupiter::e, jupiter::perihelionAngle);
+    draw_orbit(saturn::a, saturn::e, saturn::perihelionAngle);
+    draw_orbit(uranus::a, uranus::e, uranus::perihelionAngle);
+    draw_orbit(neptune::a, neptune::e, neptune::perihelionAngle);
 }
-Vector2 rotate_point(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed)
+Vector2 rotate_point(float& angle, float a, float e, float perihelionAngle, float speed)
 {
 
-    float radians = (angle + peri_pluton::peri_helionAngle) * DEG2RAD; // calculates the angle in radians
-    float radius = a * (1 - e * e) / (1 + e * cos(radians - peri_pluton::peri_helionAngle)); // calculates the radius
+    float radians = (angle + perihelionAngle) * DEG2RAD; // calculates the angle in radians
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // calculates the radius
     angle += speed; // increments the angle by adding the rotation speed
     if (angle > 360.f)
         angle = 0.f;
     return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) }; // returns x and y
 
 }
-Vector2 rotate_point_back(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed)
+Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed)
 {
-    float radians = (angle + peri_pluton::peri_helionAngle) * DEG2RAD; // calculates the angle in radians
-    float radius = a * (1 - e * e) / (1 + e * cos(radians - peri_pluton::peri_helionAngle)); // calculates the radius
+    float radians = (angle + perihelionAngle) * DEG2RAD; // calculates the angle in radians
+    float radius = a * (1 - e * e) / (1 + e * cos(radians - perihelionAngle)); // calculates the radius
     angle -= speed; // increments the angle by adding the rotation speed
     if (angle < 0.f)
         angle = 360.f + angle;
     return Vector2{ screenWidth / 2.f + radius * float(cos(radians)), screenHeight / 2.f + radius * float(sin(radians)) }; // returns x and y
 }
-void rotate_planet(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed, int& left, int& down)
+void rotate_planet(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down)
 {
-    Vector2 newp = rotate_point(angle, a, e, peri_pluton::peri_helionAngle, speed); // calculate the new position
+    Vector2 newp = rotate_point(angle, a, e, perihelionAngle, speed); // calculate the new position
     left = newp.x; // assign x
     down = newp.y; // assign y
     //rotate mercury example
-    //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::peri_pluton::peri_helionAngle, 10.f);
+    //  Vector2 newp = rotate_point(align_mercury::angle, mercury::a, mercury::e,mercury::perihelionAngle, 10.f);
     //  align_mercury::left = newp.x ;
     // align_mercury::down = newp.y ;
 }
-void rotate_planet_back(float& angle, float a, float e, float peri_pluton::peri_helionAngle, float speed, int& left, int& down)
+void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down)
 {
-    Vector2 newp = rotate_point_back(angle, a, e, peri_pluton::peri_helionAngle, speed);
+    Vector2 newp = rotate_point_back(angle, a, e, perihelionAngle, speed);
     left = newp.x;
     down = newp.y;
-  
+
 }
 string convert_float_to_str(float a) // convert float to string 
 {
@@ -189,7 +189,7 @@ string convert_float_to_str(float a) // convert float to string
     string t; // temporary string
     r >> t; // converting the float value to a string
     return t;
-  // c_str() is used to convert string to const char * so it can be printed and taken as an argument */
+    // c_str() is used to convert string to const char * so it can be printed and taken as an argument */
 }
 void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D checker, Texture2D info, Texture2D pluton_in_stats)
 {
@@ -198,10 +198,10 @@ void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D 
 
     bool check_hover_info = CheckCollisionPointRec(GetMousePosition(), { 1665, 20, (float)blank_info.width, (float)blank_info.height });
 
-        DrawTexture(info, 1665, 20, WHITE); // draw info button, 1665 is left(x) and 20 is down(y)
+    DrawTexture(info, 1665, 20, WHITE); // draw info button, 1665 is left(x) and 20 is down(y)
 
-        DrawTexture(blank_info, 1665, 20, BLANK); // use this texture as an invisible filler, so that the info button works
-    
+    DrawTexture(blank_info, 1665, 20, BLANK); // use this texture as an invisible filler, so that the info button works
+
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover_info && info_check == 0) // if the button is clicked and info_check is 0 (it hasn't been clicked before) the menu is shown and info_check becomes 1
     {
         info_check = 1;
@@ -240,33 +240,33 @@ void menu_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D 
             {
                 if (check2 == 0)
                 {
-               DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
-               DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
-               DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
-               DrawText("100", left_speed[7] + 20, align_speed_down[7] + 60 + 51, text_size, WHITE);
+                    DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
+                    DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("100", left_speed[7] + 20, align_speed_down[7] + 60 + 51, text_size, WHITE);
                 }
-               if (check2 == 1)
-              {
-               DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
-               DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
-               DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
-               DrawText("600", left_speed[7] + 20, align_speed_down[7] + 60 + 51, text_size, WHITE);
-              }
-              if (check2 == 2)
-             {
-              DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
-              DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
-              DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
-              DrawText("1100", left_speed[7] + 16, align_speed_down[7] + 60 + 51, text_size, WHITE);
-             }
-            if (check2 == 3)
-            {
-            DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
-            DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
-            DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
-            DrawText("1600", left_speed[7] + 12, align_speed_down[7] + 60 + 51, text_size, WHITE);     
-            }
-           
+                if (check2 == 1)
+                {
+                    DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
+                    DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("600", left_speed[7] + 20, align_speed_down[7] + 60 + 51, text_size, WHITE);
+                }
+                if (check2 == 2)
+                {
+                    DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
+                    DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("1100", left_speed[7] + 16, align_speed_down[7] + 60 + 51, text_size, WHITE);
+                }
+                if (check2 == 3)
+                {
+                    DrawTexture(Stats, left_stats, align_stats_down[8] + 51, RAYWHITE);
+                    DrawText("-173", left_temperature[7] + 5, align_temperature_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("2337km", left_length[7] + 10, align_length_down[7] + 60 + 51, text_size, WHITE);
+                    DrawText("1600", left_speed[7] + 12, align_speed_down[7] + 60 + 51, text_size, WHITE);
+                }
+
             }
         }
         bool hover[9] = {
@@ -366,7 +366,7 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
     bool check_exit = CheckCollisionPointRec(GetMousePosition(), { 20,20,(float)checker_exit_button.width,(float)checker_exit_button.height }); // exit button check if it is hovered
 
-    
+
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_exit && check_to_show == 0) // if the button is clicked and check_to_show is 0 (it hasn't been clicked before) the functions are shown and check_to_show becomes 1
     {
         check_to_show = 1;
@@ -456,23 +456,23 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
                 draw_planet(Uranus, align_uranus::left, align_uranus::down, align_uranus::angle);
             if (!black_hole_disappear[7])
                 draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
-            
 
-            rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-            rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+            rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-            rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+            rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-            rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+            rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-            rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+            rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-            rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+            rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-            rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+            rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-            rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+            rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+
+            rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
         }
         if (check1 == 0) // default (not clicked,right direction )
         {
@@ -494,22 +494,22 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
                 draw_planet(Uranus, align_uranus::left, align_uranus::down, align_uranus::angle);
             if (!black_hole_disappear[7])
                 draw_planet(Neptune, align_neptune::left, align_neptune::down, align_neptune::angle);
-            
-            rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-            rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+            rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-            rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+            rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-            rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+            rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-            rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+            rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-            rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+            rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-            rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+            rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-            rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+            rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+
+            rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
 
 
         }
@@ -521,43 +521,43 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         {
             check2 = 1;
             // first click
-             speeds["Sun"]+=500.f;
-             speeds["Mercury"] += 500.f;
-             speeds["Venus"] += 500.f;
-             speeds["Earth"] += 500.f;
-             speeds["Mars"] += 500.f;
-             speeds["Jupiter"] += 500.f;
-             speeds["Saturn"] += 500.f;
-             speeds["Uranus"] += 500.f;
-             speeds["Neptune"] += 500.f;
+            speeds["Sun"] += 500.f;
+            speeds["Mercury"] += 500.f;
+            speeds["Venus"] += 500.f;
+            speeds["Earth"] += 500.f;
+            speeds["Mars"] += 500.f;
+            speeds["Jupiter"] += 500.f;
+            speeds["Saturn"] += 500.f;
+            speeds["Uranus"] += 500.f;
+            speeds["Neptune"] += 500.f;
         }
         else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[1] && check2 == 1)
         {
             check2 = 2;
             // second click
-             speeds["Sun"]+=500.f;
-             speeds["Mercury"] += 500.f;
-             speeds["Venus"] += 500.f;
-             speeds["Earth"] += 500.f;
-             speeds["Mars"] += 500.f;
-             speeds["Jupiter"] += 500.f;
-             speeds["Saturn"] += 500.f;
-             speeds["Uranus"] += 500.f;
-             speeds["Neptune"] += 500.f;
+            speeds["Sun"] += 500.f;
+            speeds["Mercury"] += 500.f;
+            speeds["Venus"] += 500.f;
+            speeds["Earth"] += 500.f;
+            speeds["Mars"] += 500.f;
+            speeds["Jupiter"] += 500.f;
+            speeds["Saturn"] += 500.f;
+            speeds["Uranus"] += 500.f;
+            speeds["Neptune"] += 500.f;
         }
         else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[1] && check2 == 2)
         {
             check2 = 3;
             // third click
-             speeds["Sun"]+=500.f;
-             speeds["Mercury"] += 500.f;
-             speeds["Venus"] += 500.f;
-             speeds["Earth"] += 500.f;
-             speeds["Mars"] += 500.f;
-             speeds["Jupiter"] += 500.f;
-             speeds["Saturn"] += 500.f;
-             speeds["Uranus"] += 500.f;
-             speeds["Neptune"] += 500.f;
+            speeds["Sun"] += 500.f;
+            speeds["Mercury"] += 500.f;
+            speeds["Venus"] += 500.f;
+            speeds["Earth"] += 500.f;
+            speeds["Mars"] += 500.f;
+            speeds["Jupiter"] += 500.f;
+            speeds["Saturn"] += 500.f;
+            speeds["Uranus"] += 500.f;
+            speeds["Neptune"] += 500.f;
         }
         else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_hover[1] && check2 == 3)
         {
@@ -582,39 +582,39 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////fix all////////////////////////////////////////////// and pluton//////////////////////////////////
             if (check1 == 0)// if not clicked right direction, use rotate_point
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
             }
             if (check1 == 1) // if clicked left direction, use rotate_point_back 
             {
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed, align_neptune::left, align_neptune::down);
             }
 
         }
@@ -624,41 +624,41 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
             //first click
             if (check1 == 0)
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
 
             }
             if (check1 == 1)
             {
 
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.1f, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.1f, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.1f, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.1f, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.1f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.1f, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.1f, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.1f, align_neptune::left, align_neptune::down);
             }
         }
         if (check2 == 2)
@@ -667,39 +667,39 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
             if (check1 == 0)// if not clicked right direction, use rotate_point
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
             }
             if (check1 == 1) // if clicked left direction, use rotate_point_back 
             {
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.3f, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.3f, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.3f, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.3f, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.3f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.3f, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.3f, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.3f, align_neptune::left, align_neptune::down);
 
             }
 
@@ -711,39 +711,39 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
             if (check1 == 0)// if not clicked right direction, use rotate_point
             {
-                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
+                rotate_planet(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
 
-                rotate_planet(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
+                rotate_planet(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
 
-                rotate_planet(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
+                rotate_planet(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
 
-                rotate_planet(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
+                rotate_planet(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
 
-                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
+                rotate_planet(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
+                rotate_planet(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
 
-                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
+                rotate_planet(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
 
-                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
+                rotate_planet(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
             }
             if (check1 == 1) // if clicked left direction, use rotate_point_back 
             {
-                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::peri_pluton::peri_helionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
+                rotate_planet_back(align_mercury::angle, mercury::a, mercury::e, mercury::perihelionAngle, actual_speed::mercury_speed + 0.5f, align_mercury::left, align_mercury::down);
 
-                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::peri_pluton::peri_helionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
+                rotate_planet_back(align_venus::angle, venus::a, venus::e, venus::perihelionAngle, actual_speed::venus_speed + 0.5f, align_venus::left, align_venus::down);
 
-                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::peri_pluton::peri_helionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
+                rotate_planet_back(align_earth::angle, earth::a, earth::e, earth::perihelionAngle, actual_speed::earth_speed + 0.5f, align_earth::left, align_earth::down);
 
-                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::peri_pluton::peri_helionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
+                rotate_planet_back(align_mars::angle, mars::a, mars::e, mars::perihelionAngle, actual_speed::mars_speed + 0.5f, align_mars::left, align_mars::down);
 
-                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::peri_pluton::peri_helionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
+                rotate_planet_back(align_jupiter::angle, jupiter::a, jupiter::e, jupiter::perihelionAngle, actual_speed::jupiter_speed + 0.5f, align_jupiter::left, align_jupiter::down);
 
-                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::peri_pluton::peri_helionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
+                rotate_planet_back(align_saturn::angle, saturn::a, saturn::e, saturn::perihelionAngle, actual_speed::saturn_speed + 0.5f, align_saturn::left, align_saturn::down);
 
-                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::peri_pluton::peri_helionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
+                rotate_planet_back(align_uranus::angle, uranus::a, uranus::e, uranus::perihelionAngle, actual_speed::uranus_speed + 0.5f, align_uranus::left, align_uranus::down);
 
-                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::peri_pluton::peri_helionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
+                rotate_planet_back(align_neptune::angle, neptune::a, neptune::e, neptune::perihelionAngle, actual_speed::neptune_speed + 0.5f, align_neptune::left, align_neptune::down);
 
             }
         }

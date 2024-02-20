@@ -5,36 +5,36 @@ int main()
     SetTargetFPS(60);
 
     InitWindow(screenWidth, screenHeight, "Unibox"); // set screen size and name of .exe file
-    Texture2D background = LoadTexture("Images/galaxy.png"); // galaxy background
-    Texture2D stats = LoadTexture("Images/stats.png"); // show stats of pressed planet
-    Texture2D Sun = LoadTexture("Images/sun100x100.png"); // sun picture
-    Texture2D Mercury = LoadTexture("Images/mercury45x45.png"); // mercury picture
-    Texture2D Venus = LoadTexture("Images/venus50x50.png"); // venus picture
-    Texture2D Earth = LoadTexture("Images/earth47x47.png"); // earth picture
-    Texture2D Mars = LoadTexture("Images/mars48x48.png"); // mars picture
-    Texture2D Jupiter = LoadTexture("Images/jupiter49x49.png"); // jupiter picture
-    Texture2D Saturn = LoadTexture("Images/saturn121x138.png"); // saturn image
-    Texture2D Uranus = LoadTexture("Images/uranus53x52.png"); // uranus image
-    Texture2D Neptune = LoadTexture("Images/neptune70x128.png"); // neptune image
-    Texture2D blank_info = LoadTexture("Images/blank_info.png"); // cancel stats button blank
-    Texture2D start = LoadTexture("images/start_screen.png"); // start menu screen
-    Texture2D new_game = LoadTexture("Images/new_game_button.png"); // new game button
-    Texture2D quit = LoadTexture("Images/quit_button.png"); // quit button
-    Texture2D info = LoadTexture("Images/stats_icon.png"); // stats info button
-    Texture2D menu = LoadTexture("Images/stats_menu.png"); // stats menu picture
-    Texture2D functions = LoadTexture("Images/functions_menu.png"); // function options on the left
-    Texture2D checker = LoadTexture("Images/rectangle46.png");
-    Texture2D Checker = LoadTexture("Images/rectangle49.png"); // functions buttons checker
-    Texture2D exit_button = LoadTexture("Images/exit_options.png"); // exit button texture
-    Texture2D checker_exit_button = LoadTexture("Images/checker_exit.png"); // checker to see if exit options are pressed   
-    Texture2D exit_menu = LoadTexture("Images/exit_menu.png"); // exit menu options
-    Texture2D options_checker = LoadTexture("Images/exit_options_checker.png");// checker if any of the exit options are checked
-    Texture2D pluton = LoadTexture("Images/pluton.png"); // pluton picture    
-    Texture2D add_planet_menu = LoadTexture("Images/add_planet_menu2.png"); // add planet menu
-    Texture2D cancel_add_planet = LoadTexture("Images/cancel_button.png");// cancel button
-    Texture2D cancel_add_planet_blank = LoadTexture("Images/add_planet_cancel_blank_button.png"); // blank for cancel button
-    Texture2D pluton_in_stats = LoadTexture("Images/mercury_in_stats_menu.png"); // pluton stats 
-    Texture2D black_hole = LoadTexture("Images/black_hole_menu.png"); // black hole menu with planets to choose 
+    background = LoadTexture("Images/galaxy.png"); // galaxy background
+    stats = LoadTexture("Images/stats.png"); // show stats of pressed planet
+    Sun = LoadTexture("Images/sun100x100.png"); // sun picture
+    Mercury = LoadTexture("Images/mercury45x45.png"); // mercury picture
+    Venus = LoadTexture("Images/venus50x50.png"); // venus picture
+    Earth = LoadTexture("Images/earth47x47.png"); // earth picture
+    Mars = LoadTexture("Images/mars48x48.png"); // mars picture
+    Jupiter = LoadTexture("Images/jupiter49x49.png"); // jupiter picture
+    Saturn = LoadTexture("Images/saturn121x138.png"); // saturn image
+    Uranus = LoadTexture("Images/uranus53x52.png"); // uranus image
+    Neptune = LoadTexture("Images/neptune70x128.png"); // neptune image
+    blank_info = LoadTexture("Images/blank_info.png"); // cancel stats button blank
+    start = LoadTexture("images/start_screen.png"); // start menu screen
+    new_game = LoadTexture("Images/new_game_button.png"); // new game button
+    quit = LoadTexture("Images/quit_button.png"); // quit button
+    info = LoadTexture("Images/stats_icon.png"); // stats info button
+    menu = LoadTexture("Images/stats_menu.png"); // stats menu picture
+    functions = LoadTexture("Images/functions_menu.png"); // function options on the left
+    checker = LoadTexture("Images/rectangle46.png");
+    Checker = LoadTexture("Images/rectangle49.png"); // functions buttons checker
+    exit_button = LoadTexture("Images/exit_options.png"); // exit button texture
+    checker_exit_button = LoadTexture("Images/checker_exit.png"); // checker to see if exit options are pressed   
+    exit_menu = LoadTexture("Images/exit_menu.png"); // exit menu options
+    options_checker = LoadTexture("Images/exit_options_checker.png");// checker if any of the exit options are checked
+    pluton = LoadTexture("Images/pluton.png"); // pluton picture    
+    add_planet_menu = LoadTexture("Images/add_planet_menu2.png"); // add planet menu
+    cancel_add_planet = LoadTexture("Images/cancel_button.png");// cancel button
+    cancel_add_planet_blank = LoadTexture("Images/add_planet_cancel_blank_button.png"); // blank for cancel button
+    pluton_in_stats = LoadTexture("Images/mercury_in_stats_menu.png"); // pluton stats 
+    black_hole = LoadTexture("Images/black_hole_menu.png"); // black hole menu with planets to choose 
     while (!WindowShouldClose())
     {
         BeginDrawing();
@@ -55,6 +55,7 @@ int main()
         }
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && hover_quit)
         {
+            unload();
             return 0; // end the program if the quit button is pressed
         }
         
@@ -78,38 +79,7 @@ int main()
       
         EndDrawing();
     }
-    // unload the textures
-    UnloadTexture(background);
-    UnloadTexture(stats);
-    UnloadTexture(Sun);
-    UnloadTexture(Mercury);
-    UnloadTexture(Venus);
-    UnloadTexture(Earth);
-    UnloadTexture(Mars);
-    UnloadTexture(Jupiter);
-    UnloadTexture(Saturn);
-    UnloadTexture(Uranus);
-    UnloadTexture(Neptune);
-    UnloadTexture(blank_info);
-    UnloadTexture(start);
-    UnloadTexture(new_game);
-    UnloadTexture(quit);
-    UnloadTexture(info);
-    UnloadTexture(menu);
-    UnloadTexture(functions);
-    UnloadTexture(checker);
-    UnloadTexture(Checker);
-    UnloadTexture(exit_button);
-    UnloadTexture(checker_exit_button);
-    UnloadTexture(exit_menu);
-    UnloadTexture(options_checker);
-    UnloadTexture(pluton);
-    UnloadTexture(add_planet_menu);
-    UnloadTexture(cancel_add_planet);
-    UnloadTexture(cancel_add_planet_blank);
-    UnloadTexture(pluton_in_stats);
-    UnloadTexture(black_hole);
-    
+    unload(); 
 }
 
 /*theta - calculates radians and radius and then converts them to x and y
@@ -358,6 +328,40 @@ void draw_planet(Texture2D planet, int& left, int& down, float& angle)
         Vector2{ planet.width / 2.f, planet.height / 2.f }, angle, WHITE);
 
 }
+void unload()
+{
+    // unload the textures
+    UnloadTexture(background);
+    UnloadTexture(stats);
+    UnloadTexture(Sun);
+    UnloadTexture(Mercury);
+    UnloadTexture(Venus);
+    UnloadTexture(Earth);
+    UnloadTexture(Mars);
+    UnloadTexture(Jupiter);
+    UnloadTexture(Saturn);
+    UnloadTexture(Uranus);
+    UnloadTexture(Neptune);
+    UnloadTexture(blank_info);
+    UnloadTexture(start);
+    UnloadTexture(new_game);
+    UnloadTexture(quit);
+    UnloadTexture(info);
+    UnloadTexture(menu);
+    UnloadTexture(functions);
+    UnloadTexture(checker);
+    UnloadTexture(Checker);
+    UnloadTexture(exit_button);
+    UnloadTexture(checker_exit_button);
+    UnloadTexture(exit_menu);
+    UnloadTexture(options_checker);
+    UnloadTexture(pluton);
+    UnloadTexture(add_planet_menu);
+    UnloadTexture(cancel_add_planet);
+    UnloadTexture(cancel_add_planet_blank);
+    UnloadTexture(pluton_in_stats);
+    UnloadTexture(black_hole);
+}
 void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank, Texture2D black_hole)
 {
 
@@ -402,7 +406,7 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         }
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && options_hover[2])
         {
-
+            unload();
             exit(0); // terminate the program
 
         }

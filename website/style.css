@@ -139,3 +139,51 @@
 .photo-container-4{
   background-image: url(./photos/th-container.svg);
 }
+.last-section-size{
+  width: 100vw;
+  height: 60vh;
+}
+.container-for-all-nd{
+  width: 100vw;
+  height: 60vh;
+  
+}
+.child1,
+.child2{
+ gap: 5%;
+
+}
+.first-card,
+.fourth-card,
+.second-card,
+.third-card{
+  width: 40vw;
+  height: 23vh;
+  background-color: #4F4F4F;
+}
+.action-button-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: itim;
+  cursor: pointer;
+  font-size: 22px;
+  border: #C4C4C4 2px solid !important;
+  color: #E8E6E3;
+  width: 12vw;
+  height: 6vh !important;
+  border-radius: 19px !important;
+  background-color: transparent !important;
+  transition: 0.2s;
+}
+.action-button-2:hover{
+  background-color: #C4C4C4 !important;
+  color: #2B2F31;
+}
+.left-side{
+  width: 30vw;
+}
+.right-side{
+  width: 10vw;
+  display: flex;
+}

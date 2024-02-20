@@ -217,8 +217,7 @@ void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, f
 
 string convert_float_to_str(float); // convert float to string
 
-// void stats_show(Texture2D planet, const char* name,Texture2D Close,const int align_left, const int align_down);
-
+void unload();
 void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
 void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank,Texture2D black_hole);
   static bool info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
@@ -303,7 +302,36 @@ namespace down_pluton
  int down_7 = 410;
  int down_8 = 410; 
 }
-
+Texture2D background; // galaxy background
+Texture2D stats; // show stats of pressed planet
+Texture2D Sun; // sun picture
+Texture2D Mercury; // mercury picture
+Texture2D Venus; // venus picture
+Texture2D Earth; // earth picture
+Texture2D Mars; // mars picture
+Texture2D Jupiter; // jupiter picture
+Texture2D Saturn; // saturn image
+Texture2D Uranus; // uranus image
+Texture2D Neptune; // neptune image
+Texture2D blank_info; // cancel stats button blank
+Texture2D start; // start menu screen
+Texture2D new_game; // new game button
+Texture2D quit; // quit button
+Texture2D info; // stats info button
+Texture2D menu; // stats menu picture
+Texture2D functions; // function options on the left
+Texture2D checker;
+Texture2D Checker; // functions buttons checker
+Texture2D exit_button; // exit button texture
+Texture2D checker_exit_button; // checker to see if exit options are pressed   
+Texture2D exit_menu; // exit menu options
+Texture2D options_checker;// checker if any of the exit options are checked
+Texture2D pluton; // pluton picture    
+Texture2D add_planet_menu; // add planet menu
+Texture2D cancel_add_planet;// cancel button
+Texture2D cancel_add_planet_blank; // blank for cancel button
+Texture2D pluton_in_stats; // pluton stats 
+Texture2D black_hole; // black hole menu with planets to choose 
 
 
 	

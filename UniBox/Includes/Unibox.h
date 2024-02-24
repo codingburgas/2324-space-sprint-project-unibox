@@ -220,9 +220,9 @@ string convert_float_to_str(float); // convert float to string
 void unload();
 void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
 void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank,Texture2D black_hole);
-  static bool info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
-static int check1, check2, check3, check4; // variable used to check if a button is pressed and how many times
- static bool check_to_show;
+    bool info_check = 0; // check either to show or close the stats menu, by making chnages with its value under certain conditions
+int check1 = 0, check2 = 0, check3 = 0, check4 = 0; // variable used to check if a button is pressed and how many times
+bool check_to_show = 0;
 
 // pluton data to make it spin and draw properly
 namespace speed_pluton
@@ -233,8 +233,8 @@ namespace speed_pluton
  float speed_4 = 1.4f;
  float speed_5 = 1.2f;
  float speed_6 = 0.9f;
- float speed_7 = 0.7f;
- float speed_8 = 0.5f;
+ float speed_7 = 0.3f; // 0.7f
+ float speed_8 = 0.21f; // 0.5f
 }
 namespace a_pluton
 {

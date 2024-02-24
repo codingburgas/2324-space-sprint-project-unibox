@@ -203,23 +203,23 @@ namespace actual_speed // float value speed
 }
 vector <bool> draw_on_orbit(9); // checkers if pluton needs to be in the program
 vector <bool> black_hole_disappear(8); // checkers if a planet needs to disappear
-bool remove_pluton[8]; // checkers if pluton has been already drawn and if it needs to be removed again(if any of the orbit buttons is clicked twice)
+bool remove_pluton[8] = {}; // checkers if pluton has been already drawn and if it needs to be removed again(if any of the orbit buttons is clicked twice)
 
 void draw_planet(Texture2D, int&, int&, float&); // draw a texture using DrawTexturePro
 
 Vector2 rotate_point(float&, float, float, float, float);
 
-Vector2 rotate_point_back(float& angle, float a, float e, float perihelionAngle, float speed);
+Vector2 rotate_point_back(float&, float, float, float, float);
 
 void rotate_planet(float&, float, float, float, float, int&, int&);
 
-void rotate_planet_back(float& angle, float a, float e, float perihelionAngle, float speed, int& left, int& down);
+void rotate_planet_back(float&, float, float, float, float, int&, int&);
 
 string convert_float_to_str(float); // convert float to string
 
 void unload();
 void menu_show(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D); // show menu if clicked on info button and hover on the planets to see their stats
-void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, Texture2D checker_exit_button, Texture2D exit_menu, Texture2D options_checker, Texture2D Mercury, Texture2D Venus, Texture2D Earth, Texture2D Mars, Texture2D Jupiter, Texture2D Saturn, Texture2D Uranus, Texture2D Neptune, Texture2D Sun, Texture2D pluton, Texture2D add_planet_menu, Texture2D cancel_add_planet, Texture2D cancel_add_planet_blank,Texture2D black_hole);
+void functions_menu(Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D, Texture2D);
     bool info_check = 0; // check either to show or close the stats menu, by making chnages with its value under certain conditions
 int check1 = 0, check2 = 0, check3 = 0, check4 = 0; // variable used to check if a button is pressed and how many times
 bool check_to_show = 0;

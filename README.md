@@ -30,14 +30,14 @@ UniBox is solar system sandbox where you can experiment with diiferent planets.
    <br> 
    🚀 Languages and tools:
    <br>
-   <img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"/>
-   <img src="https://img.icons8.com/fluency/48/000000/visual-studio.png" alt="Visual Studio 2019"/>
-   <img src="https://img.icons8.com/fluency/48/000000/microsoft-word-2019.png" alt="MS Word logo" width=48px/>
-    <img src="https://img.icons8.com/fluency/48/000000/microsoft-powerpoint-2019.png" alt="MS PowerPoint logo" width=48px/>
-    <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git"/>
-    <img src="https://cdn.sanity.io/images/599r6htc/localized/46a76c802176eb17b04e12108de7e7e0f3736dc6-1024x1024.png?w=804&h=804&q=75&fit=max&auto=format"  width=48px>
-    <img src="https://static-00.iconduck.com/assets.00/github-icon-2048x1988-jzvzcf2t.png" width=48px>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Raylib_logo.png" width=48px>
+   <a><img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"/></a>
+   <a><img src="https://img.icons8.com/fluency/48/000000/visual-studio.png"alt="Visual Studio 2019"/></a>
+   <a><img src="https://img.icons8.com/fluency/48/000000/microsoft-word-2019.png" alt="MS Word logo" width=48px/></a>
+    <a><img src="https://img.icons8.com/fluency/48/000000/microsoft-powerpoint-2019.png" alt="MS PowerPoint logo" width=48px/></a>
+    <a><img src="https://img.icons8.com/color/48/000000/git.png" alt="Git"/></a>
+    <a><img src="https://cdn.sanity.io/images/599r6htc/localized/46a76c802176eb17b04e12108de7e7e0f3736dc6-1024x1024.png?w=804&h=804&q=75&fit=max&auto=format"  width=48px></a>
+    <a><img src="https://static-00.iconduck.com/assets.00/github-icon-2048x1988-jzvzcf2t.png" width=48px></a>
+      <a><img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Raylib_logo.png" width=48px></a>
    <br> 
 ⚙️ Installation 
 <br>

@@ -42,7 +42,7 @@ void stats_show(Texture2D blank_info, Texture2D menu, Texture2D Stats, Texture2D
 
         DrawTexture(checker, 1557, 565, BLANK); // checker neptune 9
 
-        if (show_stats_menu) // check(return 1) if pluton has been drawn on any of the orbits
+        if (any_of(draw_on_orbit.begin(), draw_on_orbit.end(), [](int a) {return a > 0; })) // check(return 1) if pluton has been drawn on any of the orbits
         {
             DrawTexture(pluton_in_stats, 1557, 625, WHITE);
             bool hover_pluton = CheckCollisionPointRec(GetMousePosition(), { 1557, 625, (float)pluton_in_stats.width, (float)pluton_in_stats.height });

@@ -15,10 +15,6 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
 
     bool check_exit = CheckCollisionPointRec(GetMousePosition(), { 20,20,(float)checker_exit_button.width,(float)checker_exit_button.height }); // exit button check if it is hovered
 
-    if (any_of(draw_on_orbit.begin(), draw_on_orbit.end(), [](int a) {return a > 0; }))
-    {
-        show_stats_menu = true;
-    }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && check_exit && check_to_show == 0) // if the button is clicked and check_to_show is 0 (it hasn't been clicked before) the functions are shown and check_to_show becomes 1
     {
         check_to_show = 1;
@@ -144,7 +140,9 @@ void functions_menu(Texture2D f_menu, Texture2D Checker, Texture2D exit_button, 
         }
         add_planet_show(pluton,cancel_add_planet, add_planet_menu);
 
+        
     }
+    
 }
 
 

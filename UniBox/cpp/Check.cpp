@@ -8,5 +8,3 @@ bool remove_pluton[8] = {}; // checkers if pluton has been already drawn and if 
 int check1 = 0, check2 = 0, check3 = 0, check4 = 0; // variable used to check if a button is pressed and how many times
 bool info_check = 0; // check either to show or close the stats menu, by making chnages with its value under certain conditions
 
-bool show_stats_menu = false;
-

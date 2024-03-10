@@ -8,4 +8,3 @@ extern bool remove_pluton[8]; // checkers if pluton has been already drawn and i
 extern int check1, check2, check3, check4; // variable used to check if a button is pressed and how many times
 extern bool info_check; // check either to show or close the stats menu, by making chnages with its value under certain conditions
 
-extern bool show_stats_menu;

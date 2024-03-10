@@ -58,10 +58,6 @@ void remove_planet(Texture2D black_hole, Texture2D cancel_add_planet)
         {
             black_hole_disappear[7] = 1;
         }
-
     }
-    if (all_of(black_hole_disappear.begin(), black_hole_disappear.end(), [](int a) {return a == 1; })) // if all planets are removed(one is left) , all return back
-    {
-        transform(black_hole_disappear.begin(), black_hole_disappear.end(), black_hole_disappear.begin(), [](int a) { return 0; }); // all return back
-    }
+    
 }

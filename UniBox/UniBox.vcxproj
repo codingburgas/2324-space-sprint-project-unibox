@@ -176,6 +176,7 @@
     <ClInclude Include="Includes\Screen.h" />
     <ClInclude Include="Includes\Stats.h" />
     <ClInclude Include="Includes\Menu.h" />
+    <ClInclude Include="Includes\StatsMenu.h" />
     <ClInclude Include="Includes\Textures.h" />
     <ClInclude Include="Includes\Unibox.h" />
     <ClInclude Include="Includes\Unload.h" />

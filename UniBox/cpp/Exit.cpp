@@ -23,8 +23,8 @@ void menu_exit(Texture2D exit_menu,Texture2D options_checker)
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && options_hover[1])
     {
-        //unfinished, how to make a new window
-        system("C:\\Users\\User\\Pictures\\2324-space-sprint-project-unibox-main\\x64\\Debug");
+        
+        system("C:\\Users\\User\\Pictures\\2324-space-sprint-project-unibox-main\\x64\\Unibox.exe");
         exit(0);
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && options_hover[2])

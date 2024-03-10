@@ -143,10 +143,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp\Convert.cpp" />
+    <ClCompile Include="cpp\Draw.cpp" />
+    <ClCompile Include="cpp\Rotate.cpp" />
+    <ClCompile Include="cpp\Menu.cpp" />
     <ClCompile Include="UniBox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Includes\Unibox.h" />
+    <ClInclude Include="Includes\Align.h" />
+    <ClInclude Include="Includes\Check.h" />
+    <ClInclude Include="Includes\Convert.h" />
+    <ClInclude Include="Includes\Draw.h" />
+    <ClInclude Include="Includes\Orbit.h" />
+    <ClInclude Include="Includes\Pluton.h" />
+    <ClInclude Include="Includes\Rotate.h" />
+    <ClInclude Include="Includes\Screen.h" />
+    <ClInclude Include="Includes\Stats.h" />
+    <ClInclude Include="Includes\Menu.h" />
+    <ClInclude Include="Includes\Textures.h" />
+    <ClInclude Include="Includes\Unibox.h" />
+    <ClInclude Include="Includes\Unload.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

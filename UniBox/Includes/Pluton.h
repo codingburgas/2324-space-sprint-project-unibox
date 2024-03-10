@@ -1,94 +1,101 @@
 #pragma once
+
 #include "Orbit.h"
 
 namespace actual_speed // float value speed
 {
-	 float mercury_speed =0.7f; // 1
-	 float venus_speed = 0.5f; //2
-	 float earth_speed = 0.3f; //3
-	 float mars_speed = 0.1f; //4
-	 float jupiter_speed = 0.07f; //5
-         float saturn_speed = 0.03f; //6
-	 float uranus_speed = 0.02f; //7
-	 float neptune_speed = 0.009f; //8
-
+	extern float mercury_speed;
+	extern float venus_speed;
+	extern float earth_speed;
+	extern float mars_speed;
+	extern float jupiter_speed;
+	extern float saturn_speed;
+	extern float uranus_speed;
+	extern float neptune_speed;
 }
 
 // pluton data to make it spin and draw properly
 namespace speed_pluton
 {
- float speed_1 = 2.f;
- float speed_2 = 1.8f;
- float speed_3 = 1.6f;
- float speed_4 = 1.4f;
- float speed_5 = 1.2f;
- float speed_6 = 0.9f;
- float speed_7 = 0.3f; // 0.7f
- float speed_8 = 0.21f; // 0.5f
+	extern float speed_1;
+	extern float speed_2;
+	extern float speed_3;
+	extern float speed_4;
+	extern float speed_5;
+	extern float speed_6;
+	extern float speed_7;
+	extern float speed_8;
 }
+
 namespace a_pluton
 {
- double a_1 = mercury::a;
- double a_2 = venus::a;
- double a_3 = earth::a;
- double a_4 = mars::a;
- double a_5 = jupiter::a;
- double a_6 = saturn::a;
- double a_7 = uranus::a;
- double a_8 = neptune::a;
+	extern double a_1;
+	extern double a_2;
+	extern double a_3;
+	extern double a_4;
+	extern double a_5;
+	extern double a_6;
+	extern double a_7;
+	extern double a_8;
 }
+
 namespace e_pluton
 {
- double e_1 = mercury::e;
- double e_2 = venus::e;
- double e_3 = earth::e;
- double e_4 = mars::e;
- double e_5 = jupiter::e;
- double e_6 = saturn::e;
- double e_7 = uranus::e;
- double e_8 = neptune::e;
+	extern double e_1;
+	extern double e_2;
+	extern double e_3;
+	extern double e_4;
+	extern double e_5;
+	extern double e_6;
+	extern double e_7;
+	extern double e_8;
 }
+
 namespace peri_pluton
 {
- double peri_1 = mercury::perihelionAngle;
- double peri_2 = venus::perihelionAngle;
- double peri_3 = earth::perihelionAngle;
- double peri_4 = mars::perihelionAngle;
- double peri_5 = jupiter::perihelionAngle;
- double peri_6 = saturn::perihelionAngle;
- double peri_7 = uranus::perihelionAngle;
- double peri_8 = neptune::perihelionAngle;
+	extern double peri_1;
+	extern double peri_2;
+	extern double peri_3;
+	extern double peri_4;
+	extern double peri_5;
+	extern double peri_6;
+	extern double peri_7;
+	extern double peri_8;
 }
+
 namespace angle_pluton
 {
- float angle_1 = 0.f;
- float angle_2 = 0.f;
- float angle_3 = 0.f;
- float angle_4 = 1.3f;
- float angle_5 = 1.3f;
- float angle_6 = 1.3f;
- float angle_7 = 1.3f;
- float angle_8 = 1.2f;
+	extern float angle_1;
+	extern float angle_2;
+	extern float angle_3;
+	extern float angle_4;
+	extern float angle_5;
+	extern float angle_6;
+	extern float angle_7;
+	extern float angle_8;
 }
+
 namespace left_pluton
 {
- int left_1 = 830;
- int left_2 = 800;
- int left_3 = 700;
- int left_4 = 659;
- int left_5 = 603;
- int left_6 = 494;
- int left_7 = 510;
- int left_8 = 390;
+	extern int left_1;
+	extern int left_2;
+	extern int left_3;
+	extern int left_4;
+	extern int left_5;
+	extern int left_6;
+	extern int left_7;
+	extern int left_8;
 }
+
 namespace down_pluton
 {
- int down_1 = 385; 
- int down_2 = 390;
- int down_3 = 400;
- int down_4 = 405;
- int down_5 = 405;
- int down_6 = 375;           
- int down_7 = 410;
- int down_8 = 410; 
+	extern int down_1;
+	extern int down_2;
+	extern int down_3;
+	extern int down_4;
+	extern int down_5;
+	extern int down_6;
+	extern int down_7;
+	extern int down_8;
 }
+

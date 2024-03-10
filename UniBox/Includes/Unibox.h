@@ -19,6 +19,8 @@ using namespace std;
 #include "../Includes/Convert.h"
 #include "../Includes/Menu.h"
 #include "../Includes/Textures.h"
+#include "../Includes/StatsMenu.h"
+#include "../Includes/Textures.h"
 
 
 

@@ -143,20 +143,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp\AddPlanet.cpp" />
+    <ClCompile Include="cpp\Align.cpp" />
+    <ClCompile Include="cpp\ChangeSpeed.cpp" />
+    <ClCompile Include="cpp\Check.cpp" />
     <ClCompile Include="cpp\Convert.cpp" />
     <ClCompile Include="cpp\Draw.cpp" />
+    <ClCompile Include="cpp\Exit.cpp" />
+    <ClCompile Include="cpp\Orbit.cpp" />
+    <ClCompile Include="cpp\Pluton.cpp" />
+    <ClCompile Include="cpp\RemovePlanet.cpp" />
     <ClCompile Include="cpp\Rotate.cpp" />
     <ClCompile Include="cpp\Menu.cpp" />
+    <ClCompile Include="cpp\RotateDefault.cpp" />
+    <ClCompile Include="cpp\Stats.cpp" />
+    <ClCompile Include="cpp\StatsMenu.cpp" />
+    <ClCompile Include="cpp\Textures.cpp" />
     <ClCompile Include="UniBox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\AddPlanet.h" />
     <ClInclude Include="Includes\Align.h" />
+    <ClInclude Include="Includes\ChangeSpeed.h" />
     <ClInclude Include="Includes\Check.h" />
     <ClInclude Include="Includes\Convert.h" />
     <ClInclude Include="Includes\Draw.h" />
     <ClInclude Include="Includes\Orbit.h" />
     <ClInclude Include="Includes\Pluton.h" />
+    <ClInclude Include="Includes\RemovePlanet.h" />
     <ClInclude Include="Includes\Rotate.h" />
+    <ClInclude Include="Includes\RotateDefault.h" />
     <ClInclude Include="Includes\Screen.h" />
     <ClInclude Include="Includes\Stats.h" />
     <ClInclude Include="Includes\Menu.h" />
